@@ -38,15 +38,31 @@ export default function Header() {
     >
       <div className="max-w-[1400px] mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-accent-indigo flex items-center justify-center font-display font-black text-white text-xs">
-            BAI
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className={cn(
+            "w-14 h-14 flex items-center justify-center transition-colors duration-300",
+            isScrolled ? "text-accent-indigo" : "text-white"
+          )}>
+            <img 
+              src="/Logo.jpeg" 
+              alt="Bharath Aadhya Intelligence Logo" 
+              className={cn(
+                "w-full h-full object-contain",
+                !isScrolled && "filter invert brightness-[2]"
+              )} 
+            />
           </div>
           <div className="flex flex-col leading-tight">
-            <span className="font-display font-black text-lg text-foreground tracking-tight">
+            <span className={cn(
+              "font-display font-black text-xl tracking-tight transition-colors duration-300",
+              isScrolled ? "text-foreground" : "text-white"
+            )}>
               Bharath Aadhya
             </span>
-            <span className="text-[9px] uppercase tracking-[0.2em] text-muted font-bold -mt-1">
+            <span className={cn(
+              "text-[9px] uppercase tracking-[0.2em] font-bold -mt-1 transition-colors duration-300",
+              isScrolled ? "text-muted" : "text-white/70"
+            )}>
               Intelligence
             </span>
           </div>
@@ -58,7 +74,10 @@ export default function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-bold text-muted hover:text-accent-indigo transition-colors"
+              className={cn(
+                "text-sm font-bold transition-colors duration-300",
+                isScrolled ? "text-muted hover:text-accent-indigo" : "text-white/90 hover:text-white"
+              )}
             >
               {link.name}
             </Link>
@@ -69,14 +88,19 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-4">
           <Link
             href="#contact"
-            className="flex items-center gap-2 px-5 py-2 bg-accent-indigo text-white rounded-lg text-sm font-bold hover:shadow-lg transition-all active:scale-95"
+            className="flex items-center gap-2 px-5 py-2 bg-accent-indigo text-white rounded-lg text-sm font-bold hover:shadow-lg transition-all active:scale-95 hover:bg-accent-indigo/90"
           >
             <Plus size={16} />
             Post Request
           </Link>
           <Link
             href="#login"
-            className="px-5 py-2 border border-border-emphasis text-foreground rounded-lg text-sm font-bold hover:bg-black/5 transition-all"
+            className={cn(
+              "px-5 py-2 border rounded-lg text-sm font-bold transition-all",
+              isScrolled 
+                ? "border-border-emphasis text-foreground hover:bg-black/5" 
+                : "border-white/30 text-white hover:bg-white/10"
+            )}
           >
             Sign In
           </Link>
