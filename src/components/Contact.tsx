@@ -72,7 +72,7 @@ export default function Contact() {
                   Ready to start your next big project? Whether it&apos;s a cutting-edge AI model, a high-performance mobile app, or a scalable web ecosystem, our team is ready to scale with you in real time.
                 </p>
                 
-                <div className="space-y-6">
+                <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white/90">
                       <Sparkles size={24} />
@@ -112,10 +112,10 @@ export default function Contact() {
                     onSubmit={handleSubmit}
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="relative z-10 space-y-5"
+                    className="relative z-10 space-y-8"
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <div className="space-y-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-3">
                         <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Full Name</label>
                         <div className="relative group">
                           <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
@@ -123,11 +123,11 @@ export default function Contact() {
                             required
                             type="text" 
                             placeholder="John Doe"
-                            className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-12 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
+                            className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
                           />
                         </div>
                       </div>
-                      <div className="space-y-2">
+                      <div className="space-y-3">
                         <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Business Email</label>
                         <div className="relative group">
                           <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
@@ -135,13 +135,13 @@ export default function Contact() {
                             required
                             type="email" 
                             placeholder="john@company.com"
-                            className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-12 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
+                            className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
                           />
                         </div>
                       </div>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Phone Number</label>
                       <div className="relative group">
                         <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
@@ -149,18 +149,18 @@ export default function Contact() {
                           required
                           type="tel" 
                           placeholder="+91 98765 43210"
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-12 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
+                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Project Type</label>
                       <div className="relative group">
                         <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
                         <select 
                           required
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-12 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white appearance-none cursor-pointer placeholder:text-white/20"
+                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white appearance-none cursor-pointer placeholder:text-white/20"
                         >
                           <option value="" disabled selected className="text-foreground">Select a service</option>
                           {projectTypes.map(type => (
@@ -173,15 +173,15 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                       <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Project Details</label>
                       <div className="relative group">
-                        <MessageSquare className="absolute left-4 top-5 text-white/30 group-focus-within:text-white transition-colors" size={18} />
+                        <MessageSquare className="absolute left-4 top-6 text-white/30 group-focus-within:text-white transition-colors" size={18} />
                         <textarea 
                           required
                           rows={4}
                           placeholder="Tell us about your vision..."
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-12 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20 resize-none"
+                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-5 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20 resize-none"
                         ></textarea>
                       </div>
                     </div>

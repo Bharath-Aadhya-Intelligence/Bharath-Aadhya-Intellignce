@@ -1,8 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, Users, Mail, Phone, MapPin, Send, Plus } from "lucide-react";
+import { Globe, Users, Mail, Phone, MapPin, Send, Plus, createLucideIcon } from "lucide-react";
 import Link from "next/link";
+
+// Custom icons due to missing brand icons in this version of lucide-react
+const Linkedin = createLucideIcon('Linkedin', [
+  ['path', { d: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z', key: '1' }],
+  ['rect', { width: '4', height: '12', x: '2', y: '9', key: '2' }],
+  ['circle', { cx: '4', cy: '4', r: '2', key: '3' }],
+]);
+
+const Instagram = createLucideIcon('Instagram', [
+  ['rect', { width: '20', height: '20', x: '2', y: '2', rx: '5', ry: '5', key: '1' }],
+  ['path', { d: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z', key: '2' }],
+  ['line', { x1: '17.5', x2: '17.51', y1: '6.5', y2: '6.5', key: '3' }],
+]);
+
+const Twitter = createLucideIcon('Twitter', [
+  ['path', { d: 'm4 4 11.733 16H20L8.267 4z', key: '1' }],
+  ['path', { d: 'm4 20 6.768-6.768', key: '2' }],
+  ['path', { d: 'm13.277 10.723 6.723-6.723', key: '3' }]
+]);
+
+const Youtube = createLucideIcon('Youtube', [
+  ['path', { d: 'M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2 103.38 103.38 0 0 1 15 0 2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2 103.38 103.38 0 0 1-15 0 2 2 0 0 1-2-2z', key: '1' }],
+  ['path', { d: 'm10 15 5-3-5-3z', key: '2' }]
+]);
 
 const companyLinks = [
   { name: "Programs", href: "#programs" },
@@ -19,8 +43,11 @@ const supportLinks = [
 ];
 
 const socialLinks = [
+  { icon: Linkedin, href: "#", name: "LinkedIn" },
+  { icon: Instagram, href: "#", name: "Instagram" },
+  { icon: Twitter, href: "#", name: "Twitter" },
+  { icon: Youtube, href: "#", name: "YouTube" },
   { icon: Users, href: "#", name: "Community" },
-  { icon: Globe, href: "#", name: "Website" },
 ];
 
 export default function Footer() {
