@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  Bot, 
-  Smartphone, 
-  Monitor, 
-  Rocket, 
-  Cpu, 
-  Layers 
+import {
+  Bot,
+  Smartphone,
+  Monitor,
+  Rocket,
+  Cpu,
+  Layers
 } from "lucide-react";
 
 const services = [
@@ -54,7 +54,7 @@ export default function Services() {
     <section id="services" className="relative py-24 bg-white overflow-hidden">
       {/* Grid Pattern */}
       <div className="absolute inset-0 grid-background opacity-[0.2]" />
-      
+
       <div className="container relative z-10 mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.h2
@@ -66,10 +66,10 @@ export default function Services() {
             OUR CORE EXPERTISE
           </motion.h2>
           <motion.p
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             transition={{ delay: 0.1 }}
-             viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
             className="text-lg text-muted font-medium"
           >
             From building India's first LLM to crafting elite digital experiences, we redefine the boundaries of innovation.

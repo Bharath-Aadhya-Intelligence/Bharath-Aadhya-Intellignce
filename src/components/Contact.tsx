@@ -10,7 +10,8 @@ import {
   Briefcase, 
   MessageSquare,
   CheckCircle2,
-  Sparkles
+  Sparkles,
+  AlertCircle
 } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -18,6 +19,8 @@ import { twMerge } from "tailwind-merge";
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+import { sendEmail } from "@/app/actions/send-email";
 
 const projectTypes = [
   "Website Development",
@@ -30,15 +33,46 @@ const projectTypes = [
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    details: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate real-time submission
-    setTimeout(() => {
+    setError(null);
+
+    try {
+      const result = await sendEmail(formData);
+      
+      if (result.success) {
+        setIsSubmitted(true);
+        // Reset form
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          projectType: "",
+          details: "",
+        });
+      } else {
+        setError(result.error || "Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again later.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1500);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -114,6 +148,17 @@ export default function Contact() {
                     exit={{ opacity: 0, y: -20 }}
                     className="relative z-10 space-y-8"
                   >
+                    {error && (
+                      <motion.div 
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-200 text-sm font-bold"
+                      >
+                        <AlertCircle size={18} />
+                        {error}
+                      </motion.div>
+                    )}
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-3">
                         <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Full Name</label>
@@ -121,6 +166,9 @@ export default function Contact() {
                           <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
                           <input 
                             required
+                            name="fullName"
+                            value={formData.fullName}
+                            onChange={handleChange}
                             type="text" 
                             placeholder="John Doe"
                             className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
@@ -133,6 +181,9 @@ export default function Contact() {
                           <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
                           <input 
                             required
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
                             type="email" 
                             placeholder="john@company.com"
                             className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
@@ -147,6 +198,9 @@ export default function Contact() {
                         <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
                         <input 
                           required
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
                           type="tel" 
                           placeholder="+91 98765 43210"
                           className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
@@ -160,9 +214,12 @@ export default function Contact() {
                         <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
                         <select 
                           required
+                          name="projectType"
+                          value={formData.projectType}
+                          onChange={handleChange}
                           className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white appearance-none cursor-pointer placeholder:text-white/20"
                         >
-                          <option value="" disabled selected className="text-foreground">Select a service</option>
+                          <option value="" disabled className="text-foreground">Select a service</option>
                           {projectTypes.map(type => (
                             <option key={type} value={type} className="text-foreground">{type}</option>
                           ))}
@@ -179,6 +236,9 @@ export default function Contact() {
                         <MessageSquare className="absolute left-4 top-6 text-white/30 group-focus-within:text-white transition-colors" size={18} />
                         <textarea 
                           required
+                          name="details"
+                          value={formData.details}
+                          onChange={handleChange}
                           rows={4}
                           placeholder="Tell us about your vision..."
                           className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-5 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20 resize-none"
