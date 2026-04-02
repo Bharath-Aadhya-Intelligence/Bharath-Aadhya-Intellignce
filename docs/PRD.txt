@@ -1,0 +1,840 @@
+
+PRODUCT REQUIREMENTS DOCUMENT
+Bharath Aadhya Intelligence
+Corporate Introduction Website
+Empowering the Smarter India
+Version 1.0   |   2026   |   CONFIDENTIAL
+
+Document Type
+Product Requirements Document (PRD)
+Version
+1.0 — Initial Release
+Status
+Ready for Design & Development Execution
+Organization
+Bharath Aadhya Intelligence
+Scope
+V1 Corporate Introduction Website — Landing Page & Core Architecture
+Audience
+Design Team, Engineering Team, Leadership
+Classification
+Confidential — Internal Use Only
+Prepared By
+Product Management
+Date
+2026
+
+This PRD defines the complete requirements for building Bharath Aadhya Intelligence's corporate introduction website — a high-performance, enterprise-grade digital presence that communicates the organization's IT services, values, and capabilities to businesses across India and beyond.
+
+TABLE OF CONTENTS
+
+1.  Product Vision & Goals	3
+2.  Target Audience & User Personas	5
+3.  Website Structure & Section Requirements	6
+  3.1  Header / Navigation	7
+  3.2  Hero Section	7
+  3.3  Services / Offerings Section	8
+  3.4  About / Impact Section	9
+  3.5  Testimonials Section	10
+  3.6  Partners & Clients Showcase	11
+  3.7  Final Call-to-Action Block	11
+  3.8  Footer	12
+4.  User Flow & Interactions	13
+5.  Design System & Visual Language	15
+6.  Non-Functional Requirements	17
+7.  Technology Stack & Integrations	19
+8.  Future Phases & Roadmap	21
+9.  Acceptance Criteria & Launch Checklist	22
+
+SECTION 1
+Product Vision & Goals
+
+1.1  Executive Summary
+This document defines the complete product, design, and engineering requirements for the official corporate introduction website of Bharath Aadhya Intelligence (BAI) — an India-based IT services organisation.
+The website is BAI's primary digital front-door. It must communicate organisational credibility, articulate the breadth of IT service capabilities, build trust with decision-makers, and convert qualified visitors into business conversations. The design and structural approach is inspired by the HackCulture.io aesthetic — dark, modern, enterprise-grade, and conversion-optimised — adapted entirely for an IT services context.
+Core Mission: Bharath Aadhya Intelligence exists to empower India's digital future. The website must communicate this mission instantly, confidently, and memorably to every visitor.
+
+1.2  Strategic Objectives
+	•	Establish BAI as a credible, premium IT services brand for Indian enterprises, SMBs, startups, and government institutions.
+	•	Generate qualified inbound leads — primarily 'Get In Touch' form submissions and direct contact initiations.
+	•	Communicate BAI's six core IT service capabilities clearly and with tangible business outcomes.
+	•	Build immediate trust through impact statistics, client testimonials, and partner/client logos.
+	•	Achieve top-tier performance: sub-2s load time, mobile-first, accessibility compliant.
+	•	Support organic discoverability through on-page SEO optimised for high-intent IT services keywords in India.
+	•	Serve as the foundation for future digital growth — blog, case studies, careers, and client portal.
+
+1.3  Success Metrics — KPIs for V1 Launch
+Metric
+90-Day Target
+Measurement Tool
+Monthly organic visitors
+3,000+
+Google Analytics 4
+'Get In Touch' form submissions
+40+ qualified leads
+CRM / HubSpot
+Average session duration
+> 2 minutes
+GA4
+Bounce rate
+< 50%
+GA4
+Core Web Vitals — LCP
+< 2.5 seconds
+Google PageSpeed
+Mobile responsiveness score
+95+ / 100
+PageSpeed Insights
+SEO keyword ranking
+Top 10 for 5 target keywords
+SEMrush / Ahrefs
+Accessibility score
+90+ / 100
+Lighthouse
+
+SECTION 2
+Target Audience & User Personas
+
+2.1  Primary Audience Segments
+The BAI website serves multiple audience segments simultaneously. Every design, copy, and UX decision must account for this diversity.
+
+Enterprises
+SMBs & Startups
+Government
+IT Professionals
+CTOs, CIOs, Digital Transformation Officers, Procurement Heads at large Indian corporations.
+Need: Reliable IT partner for scale.
+Founders and tech leads looking for affordable, quality IT execution without building a large in-house team.
+Need: Cost-efficient expert delivery.
+Government bodies and PSUs seeking compliant digital infrastructure and e-governance solutions.
+Need: Trusted, compliant technology partner.
+Developers and IT professionals evaluating BAI as an employer or technology collaborator.
+Need: Company culture and career signals.
+
+2.2  Primary Persona — Enterprise Decision Maker
+Name
+Aditya Nair
+Title
+CTO / VP Engineering, mid-to-large Indian enterprise
+Goal
+Find a reliable IT services partner for a cloud migration or AI implementation initiative
+Pain Points
+Sceptical of vendor claims; needs proof of delivery; time-poor; risk-averse
+Journey
+Google search → lands on homepage → hero resonates → scrolls services → reads stats + testimonials → fills 'Get In Touch' form
+Key Trigger
+Sees recognisable client logos + strong ROI metrics + clear service descriptions
+
+2.3  Secondary Persona — SMB Founder
+Name
+Priya Menon
+Title
+Founder, 20-person B2B SaaS startup
+Goal
+Hire an IT services partner to build their core product faster than hiring in-house
+Pain Points
+Budget conscious; needs transparent communication; has been burned by agencies before
+Journey
+LinkedIn referral → homepage → services section → about / team section → contact form
+Key Trigger
+Concise service descriptions, visible track record, easy contact flow
+
+SECTION 3
+Website Structure & Section Requirements
+
+The V1 website is a single-page scrollable experience with anchor navigation. All eight sections below must be treated as independent UI components, each with defined content, interactions, design specs, and responsive behaviour.
+Design and engineering teams: treat each sub-section below as one Figma frame and one React/HTML component. Build, review, and sign off each independently before integrating into the full page.
+
+
+3.1  Header / Navigation
+The navigation bar is the persistent wayfinding and brand anchor element. It must be sticky, fast-loading, and always accessible.
+Content Requirements
+Element
+Content / Label
+Behaviour
+Logo / Brand Mark
+BAI logotype (initials block) + 'Bharath Aadhya' wordmark + 'Intelligence' subtitle
+Left-aligned. Click scrolls to top / navigates to '/'. SVG + PNG fallback.
+Nav Item 1
+"Services"
+Smooth-scrolls to #services section on click.
+Nav Item 2
+"About Us"
+Smooth-scrolls to #about section.
+Nav Item 3
+"Our Impact"
+Smooth-scrolls to #impact / stats section.
+Nav Item 4
+"Contact"
+Smooth-scrolls to #contact / footer section.
+CTA Button 1
+"Explore Services"
+Ghost/outlined style. Smooth-scrolls to #services.
+CTA Button 2
+"Get In Touch"
+Filled, accent-orange. Opens contact form or scrolls to #contact.
+Mobile Menu
+Hamburger icon (≡)
+Full-screen overlay menu on viewports < 768px. All nav links + CTAs visible.
+
+Design Specifications
+	•	Height: 72px desktop / 60px mobile. Position: sticky, top: 0. Z-index: 1000.
+	•	Default state: Transparent background over hero.
+	•	Scrolled state (after 60px scroll): Dark navy background (#050B18) with blur/glass effect and subtle bottom border.
+	•	Transition: CSS transition on background-color and backdrop-filter, 0.3s ease.
+	•	Logo icon: 38×38px, gradient fill (orange→blue), 9px border-radius, bold 'BAI' monogram.
+	•	Active/current section: Accent-coloured underline or dot indicator on the active nav link.
+
+3.2  Hero Section
+The hero is the highest-impact conversion moment. It must communicate BAI's value proposition within 3 seconds and provide clear pathways to the next action for every visitor type.
+Content Requirements
+Eyebrow / Badge
+"India's Intelligent IT Partner" — small pill badge with animated pulse dot
+Primary Headline
+"Empowering the Smarter India"
+Sub-headline
+"From Vision to Value"
+Body Copy
+"Bharath Aadhya Intelligence delivers end-to-end IT services that drive digital transformation, accelerate growth, and build the technology backbone of tomorrow's India."
+CTA Button 1 (Primary)
+"Work With Us" — accent-orange, large. Scrolls to #contact.
+CTA Button 2 (Secondary)
+"Explore Services" — ghost/outlined style. Scrolls to #services.
+Social Proof Strip
+Row of client/sector labels: Enterprises, Startups, Government, SMBs, NGOs — displayed as rounded pills below CTAs.
+Background
+Full-screen dark navy with radial gradient glows (blue top, orange bottom-right). Subtle CSS grid overlay pattern with radial mask-fade.
+Scroll Indicator
+Animated chevron/arrow at viewport bottom hinting at scrollable content.
+Design Specifications
+	•	Viewport: 100vh desktop, min-height: 100dvh mobile.
+	•	Headline font: Syne / display font, 64–80px desktop / 36–48px mobile, weight 800, tight letter-spacing.
+	•	'Smarter India' text: Gradient text fill (orange→blue) using CSS background-clip.
+	•	Badge: Pill-shaped, 1px orange-tinted border, subtle orange-tinted background, small animated dot.
+	•	CTA primary: 48px height min, 14–15px 32px padding, box-shadow glow on hover.
+	•	Social proof pills: Semi-transparent background, 1px border, small text, hover state.
+	•	Animation: All hero elements fade up with staggered animation-delay (0.1s increments).
+	•	Background animations: CSS-only radial gradient, no heavy canvas required. prefers-reduced-motion: remove animations.
+
+3.3  Services / Offerings Section
+The services section details BAI's six core IT capabilities. It is the primary decision-making section for evaluators and must communicate scope and business value with clarity.
+Section Header Content
+Section Label
+"What We Do"
+Section Title
+"IT Solutions Built for Modern India"
+Section Subtext
+"We combine deep technical expertise with a thorough understanding of India's unique digital landscape to deliver solutions that matter."
+The 6 Core Services — Detailed Requirements
+
+#
+Service Name
+Description
+Icon Colour Theme
+1
+Digital Transformation
+Re-engineer operations with intelligent digital solutions. Guide organisations from legacy systems to future-ready, cloud-native architectures. Covers process automation, ERP modernisation, and enterprise platform re-platforming.
+Orange
+2
+Cloud Services
+Design, migrate, and optimise cloud infrastructure on AWS, Azure, or GCP. Scalable, secure, cost-efficient cloud environments tailored to specific workloads. Includes FinOps, cloud security, and managed services.
+Blue
+3
+AI & Data Intelligence
+Unlock data with AI-driven analytics, machine learning models, and intelligent automation. Covers predictive analytics, NLP, computer vision, and data engineering pipelines that turn raw data into competitive advantage.
+Purple
+4
+Cybersecurity
+Enterprise-grade security frameworks, compliance audits, threat detection, and 24×7 SOC monitoring tailored for the Indian regulatory environment. Covers VAPT, ISO 27001 readiness, and incident response.
+Green
+5
+Software Development
+Custom web, mobile, and enterprise software built by seasoned engineers. From MVP to full-scale platforms — quality code on time and on budget. Stack-agnostic. Covers frontend, backend, APIs, and DevOps.
+Cyan
+6
+IT Consulting & Strategy
+Strategic technology advisory aligning IT investments with business objectives. Helps leadership teams make smarter, faster, more confident technology decisions. Covers IT roadmaps, vendor selection, and architecture reviews.
+Rose/Pink
+
+UI Layout Requirements
+	•	Desktop: 3-column × 2-row card grid. Each card: icon (48×48px), title, 2-line description, 'Learn more →' link.
+	•	Tablet: 2-column grid.
+	•	Mobile: Single-column stacked cards.
+	•	Grid layout: Separated by 1.5px dividers, creating a unified bordered grid aesthetic (not floating cards).
+	•	Card hover: Subtle background lightening + top accent border slides in from left (CSS transform scaleX).
+	•	'Learn more →' arrow gap animates on hover (+4px gap transition).
+
+3.4  About / Impact Section
+This dual-purpose section humanises the BAI brand and builds trust through quantified outcomes. It targets the rational decision-maker who has already seen the services and wants to know: 'Can they actually deliver?'
+Left Panel — Brand Narrative
+Section Label
+"Who We Are"
+Title
+"Technology with a Purpose"
+Body Para 1
+"Bharath Aadhya Intelligence is an Indian-born IT services organisation committed to building intelligent, inclusive, and impactful technology for businesses across every sector."
+Body Para 2
+"Our name carries our belief — India's ancient wisdom (Aadhya) fused with modern intelligence creates something extraordinary. Grounded, thoughtful, and forward-looking."
+CTA
+"Start a Conversation" — filled accent button, links to #contact.
+Right Panel — Impact Statistics (4 stat cards)
+Stat
+Label
+Colour Theme
+200+
+Projects successfully delivered across India
+Accent Orange
+50+
+Enterprise & SMB clients served
+Blue
+98%
+Client satisfaction & retention rate
+Accent Orange
+15+
+Years of combined technology leadership
+Blue
+
+Design Specifications
+	•	Layout: 2-column on desktop (left: text, right: 2×2 stat grid). Single column on mobile.
+	•	Stat numbers: Bold, extra-large (clamp 2.2rem to 3rem), gradient text fill matching colour theme.
+	•	Animation: Count-up effect on stat numbers, triggered by IntersectionObserver when section enters viewport.
+	•	Stat card hover: Subtle background lightening.
+	•	Background: Near-black, slightly different from hero for visual section separation.
+
+3.5  Testimonials Section
+A social proof section that builds trust through real client voices. Critical for reducing hesitation at the consideration stage of the decision-making process.
+Section Header Content
+Section Label
+"Client Stories"
+Section Title
+"Trusted by India's Innovators"
+Section Subtext
+"Hear from the organisations we have helped transform through technology."
+Testimonial Card Data Schema
+Each testimonial card must carry the following content. A minimum of 6 real testimonials must be sourced before launch.
+
+Field
+Description
+Example
+Quote Text
+1–3 sentence outcome-focused testimonial.
+"Our cloud migration was delivered on time and 20% under budget."
+Name
+Full name of the client contact.
+Vikram Rao
+Title & Company
+Job title and employer name.
+CTO, FinTech Ventures Pvt Ltd
+Avatar
+Circular headshot (60×60px real photo, or initials avatar fallback).
+VR initials on gradient circle
+Service Tag
+Colour-coded badge: which BAI service they used.
+Cloud Services
+Star Rating
+Optional 5-star display if 4+ stars.
+★★★★★
+
+Service Tag Colour Codes
+	•	Digital Transformation — Orange
+	•	Cloud Services — Blue
+	•	AI & Data Intelligence — Purple
+	•	Cybersecurity — Green
+	•	Software Development — Cyan
+	•	IT Consulting & Strategy — Rose/Pink
+UI / Interaction Requirements
+	•	Layout: Auto-playing horizontal marquee/carousel (Swiper.js or CSS marquee animation).
+	•	Desktop: 3 cards visible; 1 partial card hinting at scroll.
+	•	Mobile: Single card, full width, touch/swipe enabled.
+	•	Marquee speed: Smooth CSS infinite scroll animation. Pauses on hover.
+	•	Fade masks on left and right edges (gradient overlay) to create depth.
+	•	Accessibility: Cards reachable by keyboard. ARIA labels on navigation controls.
+
+3.6  Partners & Clients Showcase
+A continuous marquee of client/partner brand logos signalling market validation and reducing new-prospect scepticism.
+Section Label
+"Our Partners & Clients"
+Minimum Logos
+12 logos for V1 (mix of clients and technology partners)
+Logo Format
+SVG preferred, PNG fallback. Consistent height (40–48px). Greyscale default; hover reveals colour.
+Animation
+Continuous horizontal CSS marquee (infinite loop). Pause on hover. Respects prefers-reduced-motion.
+Mobile
+Same marquee at reduced logo height (32px).
+Edge Treatment
+Gradient fade masks on left and right edges for polished depth effect.
+Rows
+Single row for ≤ 12 logos. Two staggered rows scrolling in opposite directions for > 12 logos.
+
+3.7  Final Call-to-Action Block
+The highest-intent conversion section placed immediately before the footer. Targets visitors who have read enough to be ready to act.
+Section Title
+"Ready to Build Something Smarter?"
+Sub-headline
+"Our team of IT architects is ready to understand your challenges and design solutions that deliver real business outcomes. No jargon. No pressure."
+CTA Button 1
+"Book a Discovery Call" — Filled, accent-orange, large. Links to Calendly or contact form.
+CTA Button 2
+"Download Our Capabilities Deck" — Ghost/outlined. Triggers PDF download or gated email capture.
+Background
+Dark navy card with inner glow. Subtle radial orange gradient at top-centre.
+Trust Signals
+3 micro-copy trust items below buttons: 'No commitment required', 'Response within 24 hours', 'Working with 50+ organisations'
+Visual Detail
+Background decorative pattern or subtle grid overlay within the CTA card for visual richness.
+
+3.8  Footer
+The footer is the secondary navigation system, legal compliance anchor, and contact information hub.
+Content Architecture — 4 Columns
+Column 1 — Brand
+• BAI logo (full colour)
+• 2-line mission statement
+• Social links: LinkedIn, Twitter/X, GitHub
+• Newsletter email input + Subscribe button
+Column 2 — Company
+• "Our Services" — #services
+• "About Us" — #about
+• "Our Impact" — #impact
+• "Careers" — /careers
+• "Blog" — /blog
+• "Contact" — #contact
+
+Column 3 — Services
+• Digital Transformation
+• Cloud Services
+• AI & Data Intelligence
+• Cybersecurity
+• Software Development
+• IT Consulting & Strategy
+Column 4 — Contact
+• Email: [org email address]
+• Phone: [org phone number]
+• Address: [registered address]
+• City: India
+• CIN / GST (if applicable)
+
+Footer Bottom Bar
+	•	© 2026 Bharath Aadhya Intelligence. All rights reserved.
+	•	Privacy Policy — /privacy-policy
+	•	Terms & Conditions — /terms-and-conditions
+	•	Cookie Policy — /cookie-policy
+
+SECTION 4
+User Flow & Interactions
+
+4.1  Enterprise Decision-Maker Journey
+Step
+Stage
+User Action
+Website Response
+1
+Awareness
+Arrives via Google search 'IT services company India' or LinkedIn referral
+Fast LCP load. Hero immediately visible, badge + headline communicates value within 3 seconds.
+2
+Orientation
+Reads hero headline, sees social proof client-type pills, clicks 'Explore Services'
+Smooth-scrolls to services section. Sticky nav already visible on scroll.
+3
+Evaluation
+Reads all 6 service cards. Hovers for interaction cues.
+Card hover states engage. 'Learn more →' arrow animates. Clear service descriptions with business outcomes.
+4
+Trust-Building
+Scrolls to stats. Reads 200+ projects, 98% satisfaction.
+Count-up animation triggers on scroll-enter. Numbers anchor credibility.
+5
+Social Proof
+Reads testimonials carousel. Looks for recognisable sectors or client types.
+Marquee pauses on hover. Service tags show which capability they used.
+6
+Intent
+Scrolls to CTA block or clicks 'Get In Touch' in nav.
+CTA section loads with booking option. Contact form is simple, 5 fields max.
+7
+Conversion
+Fills form / books Calendly call. Submits.
+Inline success confirmation. Lead created in CRM. Team receives Slack/email alert.
+8
+Nurture
+Receives confirmation email with BAI capabilities deck PDF.
+Automated drip sequence begins. Retargeting pixel fires.
+
+4.2  SMB Founder Journey
+Step
+Stage
+User Action
+Website Response
+1
+Discovery
+Arrives via LinkedIn referral or word-of-mouth recommendation
+Fast load. Hero communicates 'India's IT Partner' clearly.
+2
+Validation
+Scrolls quickly — checks services, stats, and testimonials
+Concise service descriptions. Stats are digestible. Testimonials have relevant sector tags.
+3
+About
+Reads 'Technology with a Purpose' — checking for authenticity
+Genuine narrative, no corporate jargon. Mission feels aligned.
+4
+Action
+Clicks 'Work With Us' or 'Start a Conversation'
+Smooth scroll to contact section or Calendly modal.
+5
+Conversion
+Fills short form or books call
+5-field form max. Mobile-friendly. Instant confirmation.
+
+4.3  'Get In Touch' / Contact Interaction Specification
+This is the primary conversion action for the website. Every element of the contact flow must be optimised for completion rate and lead quality.
+
+Option A — Calendly Embed (Recommended)
+	•	On 'Book a Discovery Call' click: Open full-screen modal overlay. Load Calendly inline widget.
+	•	Event type: 30-minute 'Discovery Call'. Automated reminders at 24h and 1h prior.
+	•	UTM parameters passed through to Calendly as custom fields for source attribution.
+	•	Post-booking: Thank-you page with confirmation + 'Download Capabilities Deck' CTA.
+	•	CRM: Calendly webhook → Zapier → HubSpot creates Contact + Deal record automatically.
+Option B — Inline Contact Form (Fallback)
+5-field form, inline on page at the #contact anchor:
+	•	Full Name (text, required)
+	•	Business Email (email, required — corporate domain preferred)
+	•	Organisation Name (text, required)
+	•	Service of Interest (dropdown: 6 services, required)
+	•	Brief description of requirement (textarea, optional, max 500 chars)
+	•	Submit: POST to CRM API. Show inline success state — no redirect. SDR notified via Slack + email instantly.
+
+SECTION 5
+Design System & Visual Language
+
+The visual design philosophy is: dark, modern, enterprise-grade — drawing from the HackCulture.io aesthetic and adapted for a premium IT services organisation. The look must signal technical sophistication and corporate trustworthiness simultaneously.
+Design direction: Deep navy backgrounds, orange-blue accent system, Syne display typeface, subtle grid overlays, radial gradient glows, and card-grid layout patterns. Zero generic AI aesthetics.
+
+5.1  Colour Palette
+Role
+Hex
+Usage
+Primary Background
+#050B18
+Deep navy — main page background
+Secondary Background
+#080F20
+Section alternates (Offerings, Testimonials)
+Card Surface
+#0C1628
+Cards, modals, elevated surfaces
+Card Surface (hover)
+#0F1C35
+Card hover state background
+Accent — Primary
+#FF6B2B
+CTA buttons, badges, highlights, animated accents
+Accent — Light
+#FF9357
+Hover states, gradient ends, icon fills
+Blue — Primary
+#2563EB
+Secondary accent, logo gradient end, stat highlights
+Blue — Light
+#3B82F6
+Hover blue states, tags, icon fills
+Border — Subtle
+rgba(255,255,255,0.07)
+Default card/section borders
+Border — Emphasis
+rgba(255,255,255,0.12)
+Hover borders, CTA borders
+Text — Primary
+#F0F4FF
+Headlines, body on dark bg
+Text — Muted
+#7B8DB5
+Body copy, secondary text
+Text — Dim
+#4A5880
+Captions, metadata, footer secondary
+Light BG (for PRD tables)
+#F2F5FA
+Light sections — not used in website dark mode
+
+5.2  Typography
+Role
+Typeface
+Usage
+Display / Hero
+Syne (Google Fonts) — weight 800
+Hero headlines, section titles, nav logo
+Body / UI
+DM Sans (Google Fonts) — weight 300/400/500
+All body copy, nav links, form fields, buttons
+Monospace
+JetBrains Mono (optional)
+Code snippets, technical specs if needed
+
+	•	Type scale: Modular 1.25 ratio. Base 16px. H1: clamp(2.8rem,7vw,5.2rem). H2: clamp(2rem,4.5vw,3.2rem). Body: 16–18px.
+	•	Hero headline: letter-spacing: -0.03em. Section titles: letter-spacing: -0.025em.
+	•	Line height: 1.7 body, 1.08–1.1 display headings.
+	•	Gradient text: CSS background-clip on orange→blue gradient for hero 'Smarter India' and key title spans.
+5.3  Component Visual Patterns
+Recurring Patterns — Use Throughout
+• Card grid: 1.5px gap, shared border creates unified grid
+• Section labels: uppercase, small, accent-coloured, left-line decoration
+• Pill badges: rounded 100px, tinted bg + border
+• Marquee animations: smooth infinite scroll
+• Hover: background lighten + accent border reveal
+• Radial glow: orange/blue radial-gradient behind hero + CTA
+Never Use — Anti-Patterns
+• White/light page backgrounds
+• Generic purple-on-white gradients
+• Comic Sans, Inter, Roboto, Arial (system fonts)
+• Stock photo hero images
+• Busy, cluttered card designs
+• Rainbow multi-colour accent schemes
+
+SECTION 6
+Non-Functional Requirements
+
+6.1  Performance Requirements
+Core Web Vitals Targets
+• LCP (Largest Contentful Paint): < 2.5s
+• INP (Interaction to Next Paint): < 100ms
+• CLS (Cumulative Layout Shift): < 0.1
+• FCP (First Contentful Paint): < 1.2s
+• TTFB (Time to First Byte): < 600ms
+Optimisation Methods Required
+• Images: WebP/AVIF with lazy loading + width/height attrs
+• Fonts: preconnect hints + font-display: swap
+• JS: code-split bundles, defer non-critical scripts
+• CDN: Vercel Edge or Cloudflare for static assets
+• SSG: All pages statically generated (Next.js ISR)
+
+6.2  Responsive Design Breakpoints
+Breakpoint
+Viewport
+Key Layout Changes
+Mobile (xs)
+< 480px
+Single column, stacked CTAs, hamburger nav, touch targets ≥ 48×48px.
+Mobile (sm)
+480–767px
+Single column, slightly wider gutters.
+Tablet (md)
+768–1023px
+2-col grid for services and stats. Full nav visible or condensed.
+Desktop (lg)
+1024–1279px
+3-col grid. Full nav. Standard desktop layout.
+Desktop (xl)
+1280–1535px
+Wider content container. More breathing room.
+Desktop (2xl)
+≥ 1536px
+Max content width 1200px centred. Background patterns visible.
+
+6.3  SEO Requirements
+	•	Every page has a unique <title> (50–60 chars) and <meta description> (150–160 chars).
+	•	Structured data (JSON-LD): Organisation, WebSite, LocalBusiness schemas.
+	•	Open Graph + Twitter Card meta tags on all pages.
+	•	Canonical URLs on all pages.
+	•	XML sitemap auto-generated and submitted to Google Search Console.
+	•	Priority target keywords: 'IT services company India', 'digital transformation services India', 'cloud services India', 'AI solutions India', 'custom software development India', 'cybersecurity services India'.
+6.4  Accessibility — WCAG 2.1 AA
+	•	All images: descriptive alt attributes.
+	•	All interactive elements: keyboard-navigable. Visible focus indicators.
+	•	Colour contrast: minimum 4.5:1 for body text, 3:1 for large text and UI components.
+	•	Carousels/marquees: pause control, ARIA roles and live region announcements.
+	•	Forms: <label> elements associated, error messages programmatically linked.
+	•	Semantic HTML: <header>, <nav>, <main>, <section>, <footer>, correct heading hierarchy.
+	•	Animated elements: honour prefers-reduced-motion media query.
+6.5  Security & Compliance
+	•	HTTPS enforced. Force redirect from HTTP to HTTPS.
+	•	Content Security Policy (CSP) headers to prevent XSS.
+	•	GDPR / India DPDP Act 2023: Cookie consent banner required before analytics/ad pixels fire.
+	•	Form rate limiting to prevent spam submissions.
+	•	No sensitive data stored client-side.
+	•	All environment variables server-side only; never exposed in client bundle.
+
+SECTION 7
+Technology Stack & Integrations
+
+7.1  Recommended Frontend Stack
+Layer
+Technology
+Version
+Rationale
+Framework
+Next.js
+14+ (App Router)
+SSG/ISR = best SEO + performance. Industry standard for B2B marketing sites.
+UI Library
+React
+18+
+Component architecture. Required by Next.js.
+Styling
+Tailwind CSS
+3+
+Utility-first. Fast, consistent, mobile-first styling.
+Component Library
+shadcn/ui
+Latest
+Accessible Radix UI primitives. Fully customisable.
+Animations
+Framer Motion
+10+
+Scroll reveals, count-up animations, hero entrance.
+Marquee/Carousel
+Embla Carousel
+8+
+Lightweight, accessible. Testimonials + partner logos.
+Icons
+Lucide React
+Latest
+Tree-shakeable SVG icon set.
+Forms
+React Hook Form + Zod
+Latest
+Performant form management + type-safe validation.
+Language
+TypeScript
+5+
+Type safety throughout; reduces bugs.
+Font Loading
+next/font
+Built-in
+Optimised Google Fonts loading, no layout shift.
+
+7.2  Hosting & Infrastructure
+Hosting
+Vercel (primary recommendation)
+Why Vercel
+Native Next.js deployment, global edge network, auto SSL, preview deployments, built-in analytics.
+Alternative
+Netlify or Cloudflare Pages for cost optimisation.
+Domain / DNS
+Route 53 or Cloudflare DNS. Vercel auto-provisions SSL via Let's Encrypt.
+CDN
+Vercel Edge Network (included). Cloudflare as secondary CDN layer for DDoS protection.
+Repository
+GitHub (private). Protected main branch, required PR reviews before merge.
+CI/CD
+Vercel GitHub integration — auto-deploy on merge to main. Preview deploys on all PRs.
+Environments
+Production (main), Preview (feature branches), Development (local).
+
+7.3  Third-Party Integrations
+Category
+Tool
+Plan
+Purpose
+CRM
+HubSpot
+Free CRM tier
+Lead capture from all forms. Contact + Deal creation.
+Booking
+Calendly
+Standard ($10/mo)
+Book a Discovery Call modal. 30-min meeting type.
+Analytics
+Google Analytics 4
+Free
+Traffic, conversions, scroll depth, CTA click events.
+Tag Manager
+Google Tag Manager
+Free
+Single container: GA4, Meta Pixel, LinkedIn Insight.
+Heatmaps
+Microsoft Clarity
+Free
+Session recordings, click heatmaps, UX insights.
+Email Marketing
+Brevo (Sendinblue)
+Free tier
+Newsletter, welcome drip sequence for new leads.
+Error Tracking
+Sentry
+Free tier
+JS error tracking in production.
+Automation
+Zapier
+Starter ($20/mo)
+Calendly → HubSpot → Slack lead notification pipeline.
+
+SECTION 8
+Future Phases & Roadmap (Out of Scope for V1)
+
+The following are explicitly out of scope for V1 but must be considered in V1 architecture decisions to avoid technical debt in later phases.
+8.1  V2 — Content & Engagement
+Blog & Thought Leadership
+• SEO-driven blog — technical articles, case studies, IT trends
+• CMS-managed posts (Sanity or Contentful)
+• Category pages for each service area
+• Author profiles for team members
+Case Studies Portal
+• Detailed client outcome stories per service
+• Filterable by industry and service type
+• Gated download option for lead generation
+• Linked to matching service pages
+
+8.2  V3 — Client & Team Portal
+	•	Client portal: Authenticated dashboard for existing clients to track project status, raise tickets, and access deliverables.
+	•	Careers page: Job listings integrated with ATS (Zoho Recruit / Lever). Application form.
+	•	Team / About page: Full team profiles, values section, and company timeline.
+	•	Events / Webinars: BAI-hosted virtual events listing and registration.
+8.3  V4 — Platform Features
+	•	IT Assessment Tool: Interactive diagnostic tool for prospects to self-assess their digital maturity and receive a tailored BAI service recommendation.
+	•	ROI Calculator: Interactive calculator estimating cost savings from cloud migration or automation.
+	•	Knowledge Base: Public technical documentation and guides authored by BAI engineers.
+	•	API / Developer Docs: If BAI builds any SaaS products — a dedicated developer portal.
+8.4  V1 → V2 Technical Guardrails
+CRITICAL: These V1 decisions prevent technical debt blocking V2 delivery.
+	•	Use Next.js App Router from day one — routing structure must accommodate future pages (/blog, /case-studies, /careers).
+	•	Content: Even static V1 content should be authored in a JSON/MDX structure to make CMS migration seamless.
+	•	Design system: Document all Tailwind tokens and component variants in Figma before V2 begins.
+	•	Analytics: Configure GA4 custom events from day one (form_submit, cta_click, scroll_depth, service_view).
+	•	Monorepo: Consider Turborepo from the start to accommodate future packages (marketing site, client portal, shared UI library).
+
+SECTION 9
+Acceptance Criteria & Launch Checklist
+
+All items below must be verified and signed off by Product, Design, and Engineering leads before the V1 website goes live to the public.
+9.1  Design Sign-Off Checklist
+	•	All 8 sections have approved Figma designs for desktop (1440px), tablet (768px), and mobile (375px).
+	•	All component states (default, hover, focus, active, disabled) are designed and documented.
+	•	All copy is finalised, reviewed, and approved by BAI leadership.
+	•	All icons, illustrations, and visual assets are sourced under commercial licences.
+	•	Brand guidelines document (logo, colour, font rules) produced and distributed to all teams.
+	•	Dark-mode contrast checked for all text elements — all pass WCAG AA.
+9.2  Engineering Sign-Off Checklist
+	•	All 8 sections implemented pixel-accurately per Figma designs.
+	•	All 3 responsive breakpoints tested across Chrome, Firefox, Safari, and Edge.
+	•	Google PageSpeed Insights: Performance ≥ 90, Accessibility ≥ 90, Best Practices ≥ 90, SEO ≥ 95.
+	•	Core Web Vitals: LCP < 2.5s, CLS < 0.1, INP < 100ms verified in field data.
+	•	Contact form submits correctly and creates records in CRM.
+	•	Calendly integration tested end-to-end including CRM record creation via Zapier.
+	•	All outbound links open in new tab with rel='noopener noreferrer'.
+	•	No console errors or warnings in production build.
+	•	Cookie consent banner fires correctly before analytics pixels.
+	•	robots.txt and sitemap.xml accessible and correctly configured.
+	•	SSL active. All HTTP traffic auto-redirects to HTTPS.
+	•	Hamburger mobile menu fully functional on all mobile breakpoints.
+9.3  Content Sign-Off Checklist
+	•	Minimum 6 real testimonials with photos (or initials avatars), names, titles, and service tags.
+	•	Minimum 12 partner/client logos sourced with permission for public display.
+	•	All 6 services have finalised descriptions, icons, and use-case copy.
+	•	Impact statistics (200+ projects, 98% satisfaction, etc.) verified by BAI leadership.
+	•	Footer contact details (email, phone, address) accurate and current.
+	•	Privacy Policy and Terms & Conditions pages live with legally reviewed content.
+9.4  Pre-Launch Actions
+	•	Google Analytics 4 property created, tracking code verified firing on all pages.
+	•	Google Search Console property verified for the domain.
+	•	HubSpot CRM pipeline configured — lead stages match the prospect funnel.
+	•	Calendly event type configured with correct owner, buffer times, and reminder emails.
+	•	LinkedIn company page created and linked from footer.
+	•	DNS records updated, propagation verified — A and CNAME records pointing to Vercel.
+	•	Internal team trained on any CMS (if used) for ongoing content updates.
+	•	Stakeholder UAT (User Acceptance Testing) session completed and sign-off received.
+
+END OF DOCUMENT
+Bharath Aadhya Intelligence  —  Corporate Website PRD v1.0  —  2026
+Confidential. Intended solely for internal design and engineering teams.
