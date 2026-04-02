@@ -2,49 +2,49 @@
 
 import { motion } from "framer-motion";
 import { 
-  Lightbulb, 
-  Search, 
-  ShieldCheck, 
-  Globe, 
-  Briefcase, 
-  Megaphone 
+  Bot, 
+  Smartphone, 
+  Monitor, 
+  Rocket, 
+  Cpu, 
+  Layers 
 } from "lucide-react";
 
 const services = [
   {
-    title: "INNOVATION CHALLENGE",
-    description: "Launch focused corporate challenges and hackathons to solve real business problems and unlock breakthrough ideas.",
-    icon: Lightbulb,
+    title: "AI & LLM RESEARCH",
+    description: "Building the nation's First Independent LLM from the ground up, tailored specifically for the Indian linguistic and cultural ecosystem.",
+    icon: Bot,
     color: "bg-blue-500",
   },
   {
-    title: "STARTUP SCOUTING",
-    description: "Identify high-potential startups aligned to your business goals and collaborate on cutting-edge technologies and solutions.",
-    icon: Search,
+    title: "MOBILE DEVELOPMENT",
+    description: "Crafting high-performance, intuitive mobile applications for iOS and Android using the latest native and hybrid technologies.",
+    icon: Smartphone,
     color: "bg-indigo-500",
   },
   {
-    title: "INTERNAL HACKATHON",
-    description: "Activate your internal workforce to co-create solutions, generate fresh ideas, and accelerate organizational transformation.",
-    icon: ShieldCheck,
+    title: "WEB ENGINEERING",
+    description: "Developing scalable, secure, and lightning-fast enterprise web platforms that drive tangible business growth and user engagement.",
+    icon: Monitor,
     color: "bg-cyan-500",
   },
   {
-    title: "EXTERNAL HACKATHON",
-    description: "Engage external talent to co-create solutions, spark fresh ideas, and accelerate breakthrough innovation at scale.",
-    icon: Globe,
+    title: "PRODUCT INCUBATION",
+    description: "We don't just build for others; we launch our own disruptive products, taking ideas from concept to global market leaders.",
+    icon: Rocket,
     color: "bg-blue-600",
   },
   {
-    title: "HIRING HACKATHON",
-    description: "Discover exceptional talent through real-world problem solving and performance-driven recruitment programs.",
-    icon: Briefcase,
+    title: "CUSTOM AI SOLUTIONS",
+    description: "Supercharge your existing business workflows by integrating custom-trained AI models and intelligent automation systems.",
+    icon: Cpu,
     color: "bg-indigo-600",
   },
   {
-    title: "PRODUCT ADOPTION",
-    description: "Drive awareness and engagement for your products through targeted developer programs and community-led evangelism.",
-    icon: Megaphone,
+    title: "FULL-STACK FREELANCING",
+    description: "Elite engineering talent available for high-end software craftsmanship, delivering pure value from front-end to robust back-ends.",
+    icon: Layers,
     color: "bg-cyan-600",
   },
 ];
@@ -63,7 +63,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-4xl font-display font-black text-foreground mb-4 tracking-tight"
           >
-            INNOVATION FOR ENTERPRISES
+            OUR CORE EXPERTISE
           </motion.h2>
           <motion.p
              initial={{ opacity: 0, y: 20 }}
@@ -72,7 +72,7 @@ export default function Services() {
              viewport={{ once: true }}
             className="text-lg text-muted font-medium"
           >
-            Bharath Aadhya Intelligence enables customized innovation with a global ecosystem of builders
+            From building India's first LLM to crafting elite digital experiences, we redefine the boundaries of innovation.
           </motion.p>
         </div>
 

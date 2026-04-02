@@ -33,8 +33,8 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-5xl md:text-8xl font-display font-black tracking-tight text-white leading-[1.05] max-w-5xl mx-auto mb-8"
         >
-          ACCELERATE INNOVATION <br />
-          FROM <span className="italic relative">VISION</span> TO <span className="italic">VALUE</span>
+          BUILDING INDIA'S <br />
+          <span className="italic relative">AI FUTURE</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -44,7 +44,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-12 font-medium leading-relaxed"
         >
-          A Global end-to-end Platform for Enterprise <span className="text-white font-bold italic">Hackathons</span>, <span className="text-white font-bold italic">Hiring Challenges</span> and <span className="text-white font-bold italic">Innovation Programs</span>
+          Developing the nation's <span className="text-white font-bold italic">First Independent LLM</span> while delivering elite <span className="text-white font-bold italic">Mobile App</span> and <span className="text-white font-bold italic">Web Engineering</span> services for global visionaries.
         </motion.p>
 
         {/* CTAs */}
@@ -58,14 +58,14 @@ export default function Hero() {
             href="#contact"
             className="w-full sm:w-auto px-10 py-5 bg-white text-accent-indigo rounded-xl font-black text-sm tracking-tight flex items-center justify-center gap-2 hover:shadow-xl transition-all active:scale-95 group"
           >
-            For Corporates
+            Hire our Dev Team
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link
-            href="#deck"
+            href="#ai"
             className="w-full sm:w-auto px-10 py-5 border-2 border-white/30 text-white rounded-xl font-black text-sm tracking-tight hover:bg-white/10 backdrop-blur-sm transition-all text-center"
           >
-            For Innovators
+            Explore AI Research
           </Link>
         </motion.div>
       </div>

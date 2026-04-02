@@ -12,9 +12,9 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const navLinks = [
-  { name: "Programs", href: "#programs" },
-  { name: "Offerings", href: "#services" },
-  { name: "Get Involved", href: "#contact" },
+  { name: "AI Research", href: "#ai" },
+  { name: "Services", href: "#services" },
+  { name: "Portfolio", href: "#portfolio" },
 ];
 
 export default function Header() {
@@ -91,7 +91,7 @@ export default function Header() {
             className="flex items-center gap-2 px-5 py-2 bg-accent-indigo text-white rounded-lg text-sm font-bold hover:shadow-lg transition-all active:scale-95 hover:bg-accent-indigo/90"
           >
             <Plus size={16} />
-            Post Request
+            Start a Project
           </Link>
           <Link
             href="#login"
@@ -141,7 +141,7 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <Plus size={18} />
-                Post Request
+                Start a Project
               </Link>
               <Link
                 href="#login"

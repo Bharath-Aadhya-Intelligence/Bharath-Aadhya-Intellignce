@@ -1,20 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Building2, Code2, Rocket } from "lucide-react";
+import { Users, Building2, Code2, Rocket, Cpu } from "lucide-react";
 
 const stats = [
-  { label: "Innovators Enrolled", value: "95,000+", icon: Users },
-  { label: "Programs Delivered", value: "250+", icon: Rocket },
-  { label: "Community Builders", value: "12,000+", icon: Code2 },
-  { label: "Hiring Partners", value: "45+", icon: Building2 },
+  { label: "Dev Projects", value: "100+", icon: Code2 },
+  { label: "AI Tokens", value: "5M+", icon: Cpu },
+  { label: "Products Launched", value: "25+", icon: Rocket },
+  { label: "Global Partners", value: "45+", icon: Building2 },
 ];
 
 export default function About() {
   return (
     <section className="relative py-24 bg-white overflow-hidden">
       <div className="container relative z-10 mx-auto px-6">
-        {/* Main Stats Block - Blue theme like HackCulture */}
+        {/* Main Stats Block */}
         <div className="rounded-[2.5rem] bg-accent-indigo p-12 md:p-20 relative overflow-hidden shadow-2xl">
           {/* Subtle Grid Overlay */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
@@ -26,7 +26,7 @@ export default function About() {
               viewport={{ once: true }}
               className="text-4xl md:text-6xl font-display font-black text-white mb-6 tracking-tight uppercase"
             >
-              DELIVERED IMPACT
+              ENGINEERING THE FUTURE
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export default function About() {
               viewport={{ once: true }}
               className="text-xl text-white/80 font-medium leading-relaxed"
             >
-              Powering innovation at scale for India's leading enterprises and a global ecosystem of top-tier talent.
+              We are on a mission to build the technology backbone of a Smarter India, from foundational AI models to world-class software solutions.
             </motion.p>
           </div>
 
