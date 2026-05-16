@@ -20,8 +20,6 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-import { sendEmail } from "@/app/actions/send-email";
-
 const projectTypes = [
   "Website Development",
   "Mobile App Development",
@@ -48,21 +46,21 @@ export default function Contact() {
     setError(null);
 
     try {
-      const result = await sendEmail(formData);
+      // GitHub Pages doesn't support Server Actions.
+      // Falling back to a mailto link for static compatibility.
+      const subject = `New Inquiry: ${formData.projectType} from ${formData.fullName}`;
+      const body = `Name: ${formData.fullName}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0AProject: ${formData.projectType}%0D%0A%0D%0ADetails:%0D%0A${formData.details}`;
       
-      if (result.success) {
-        setIsSubmitted(true);
-        // Reset form
-        setFormData({
-          fullName: "",
-          email: "",
-          phone: "",
-          projectType: "",
-          details: "",
-        });
-      } else {
-        setError(result.error || "Failed to send message. Please try again.");
-      }
+      window.location.href = `mailto:bharathaadhyaintelligence@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body).replace(/%0A/g, "%0D%0A")}`;
+      
+      setIsSubmitted(true);
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        projectType: "",
+        details: "",
+      });
     } catch (err) {
       setError("An unexpected error occurred. Please try again later.");
     } finally {
