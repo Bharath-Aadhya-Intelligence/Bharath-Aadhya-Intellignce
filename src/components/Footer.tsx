@@ -43,11 +43,7 @@ const supportLinks = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", name: "LinkedIn" },
-  { icon: Instagram, href: "#", name: "Instagram" },
-  { icon: Twitter, href: "#", name: "Twitter" },
-  { icon: Youtube, href: "#", name: "YouTube" },
-  { icon: Users, href: "#", name: "Community" },
+  { icon: Mail, href: "mailto:bharathaadhyaintelligence@gmail.com", name: "Email" },
 ];
 
 export default function Footer() {
@@ -61,7 +57,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-8 group">
-              <div className="w-14 h-14 flex items-center justify-center text-accent-indigo">
+              <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm overflow-hidden p-1.5">
                 <img src="/Logo.jpeg" alt="Bharath Aadhya Intelligence Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col leading-tight">
@@ -164,7 +160,7 @@ export default function Footer() {
              </div>
              <div className="flex items-center gap-2 text-muted font-bold text-sm">
                 <Mail size={16} className="text-accent-indigo" />
-                innovation@bai.ai
+                bharathaadhyaintelligence@gmail.com
              </div>
           </div>
         </div>

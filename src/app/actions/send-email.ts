@@ -16,7 +16,7 @@ export async function sendEmail(formData: {
   try {
     const { data, error } = await resend.emails.send({
       from: "BAI Contact Form <onboarding@resend.dev>", // Replace with your domain once verified
-      to: ["manojarya0207@gmail.com"],
+      to: ["bharathaadhyaintelligence@gmail.com"],
       subject: `New Inquiry: ${projectType} from ${fullName}`,
       replyTo: email,
       html: `

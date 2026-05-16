@@ -39,17 +39,11 @@ export default function Header() {
       <div className="max-w-[1400px] mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className={cn(
-            "w-14 h-14 flex items-center justify-center transition-colors duration-300",
-            isScrolled ? "text-accent-indigo" : "text-white"
-          )}>
+          <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm overflow-hidden p-1.5">
             <img 
               src="/Logo.jpeg" 
               alt="Bharath Aadhya Intelligence Logo" 
-              className={cn(
-                "w-full h-full object-contain",
-                !isScrolled && "filter invert brightness-[2]"
-              )} 
+              className="w-full h-full object-contain" 
             />
           </div>
           <div className="flex flex-col leading-tight">
