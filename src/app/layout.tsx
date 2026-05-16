@@ -17,10 +17,6 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Bharath Aadhya Intelligence - Empowering the Smarter India",
   description: "Bharath Aadhya Intelligence (BAI) delivers end-to-end IT services that drive digital transformation, accelerate growth, and build the technology backbone of tomorrow's India.",
-  icons: {
-    icon: "/Logo.jpeg",
-    apple: "/Logo.jpeg",
-  }
 };
 
 export default function RootLayout({
