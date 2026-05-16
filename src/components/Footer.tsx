@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Globe, Users, Mail, Phone, MapPin, Send, Plus, createLucideIcon } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Custom icons due to missing brand icons in this version of lucide-react
 const Linkedin = createLucideIcon('Linkedin', [
@@ -58,7 +59,13 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-8 group">
               <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm overflow-hidden p-1.5">
-                <img src="/Logo.jpeg" alt="Bharath Aadhya Intelligence Logo" className="w-full h-full object-contain" />
+                <Image 
+                  src="/Logo.jpeg" 
+                  alt="Bharath Aadhya Intelligence Logo" 
+                  width={56}
+                  height={56}
+                  className="w-full h-full object-contain" 
+                />
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="font-display font-black text-xl text-foreground tracking-tight uppercase">

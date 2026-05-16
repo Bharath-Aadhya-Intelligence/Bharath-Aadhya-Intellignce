@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Plus } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -40,9 +41,11 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm overflow-hidden p-1.5">
-            <img 
+            <Image 
               src="/Logo.jpeg" 
               alt="Bharath Aadhya Intelligence Logo" 
+              width={56}
+              height={56}
               className="w-full h-full object-contain" 
             />
           </div>
