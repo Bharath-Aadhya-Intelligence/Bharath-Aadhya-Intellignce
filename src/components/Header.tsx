@@ -18,6 +18,8 @@ const navLinks = [
   { name: "Portfolio", href: "#portfolio" },
 ];
 
+import LogoImg from "../../public/Logo.jpeg";
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -42,10 +44,8 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm overflow-hidden p-1.5">
             <Image 
-              src="/Logo.jpeg" 
+              src={LogoImg} 
               alt="Bharath Aadhya Intelligence Logo" 
-              width={56}
-              height={56}
               className="w-full h-full object-contain" 
             />
           </div>
