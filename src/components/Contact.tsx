@@ -2,23 +2,17 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Send, 
-  User, 
-  Mail, 
-  Phone, 
-  Briefcase, 
+import {
+  Send,
+  User,
+  Mail,
+  Phone,
+  Briefcase,
   MessageSquare,
   CheckCircle2,
   Sparkles,
   AlertCircle
 } from "lucide-react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 const projectTypes = [
   "Website Development",
@@ -50,9 +44,9 @@ export default function Contact() {
       // Falling back to a mailto link for static compatibility.
       const subject = `New Inquiry: ${formData.projectType} from ${formData.fullName}`;
       const body = `Name: ${formData.fullName}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0AProject: ${formData.projectType}%0D%0A%0D%0ADetails:%0D%0A${formData.details}`;
-      
+
       window.location.href = `mailto:bharathaadhyaintelligence@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body).replace(/%0A/g, "%0D%0A")}`;
-      
+
       setIsSubmitted(true);
       setFormData({
         fullName: "",
@@ -61,7 +55,7 @@ export default function Contact() {
         projectType: "",
         details: "",
       });
-    } catch (err) {
+    } catch {
       setError("An unexpected error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
@@ -77,11 +71,11 @@ export default function Contact() {
     <section id="contact" className="relative py-24 hero-gradient-vibrant overflow-hidden">
       {/* Background Grid */}
       <div className="absolute inset-0 grid-overlay-white opacity-[0.2]" />
-      
+
       <div className="container relative z-10 mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
+
             {/* Left Content */}
             <div>
               <motion.div
@@ -96,14 +90,14 @@ export default function Contact() {
                   </span>
                   Live Availability: Responses in 15m
                 </div>
-                
-                <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-6 tracking-tight leading-[1.1] uppercase">
+
+                <h2 className="text-4xl md:text-6xl lg:text-5xl xl:text-6xl font-display font-black text-white mb-6 tracking-tight leading-[1.1] uppercase">
                   LET&apos;S BUILD THE <span className="text-white italic">FUTURE</span> TOGETHER
                 </h2>
                 <p className="text-lg text-white/70 font-medium mb-10 leading-relaxed">
                   Ready to start your next big project? Whether it&apos;s a cutting-edge AI model, a high-performance mobile app, or a scalable web ecosystem, our team is ready to scale with you in real time.
                 </p>
-                
+
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white/90">
@@ -130,13 +124,13 @@ export default function Contact() {
             {/* Contact Form Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              whileInView={{ opacity: 1, scale: 0.90 }}
               viewport={{ once: true }}
               className="relative p-8 md:p-12 bg-white/10 backdrop-blur-3xl rounded-[2.5rem] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden"
             >
               {/* Card Ambient Glow */}
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/10 blur-[80px] rounded-full pointer-events-none" />
-              
+
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
                   <motion.form
@@ -147,7 +141,7 @@ export default function Contact() {
                     className="relative z-10 space-y-8"
                   >
                     {error && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-200 text-sm font-bold"
@@ -162,12 +156,12 @@ export default function Contact() {
                         <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Full Name</label>
                         <div className="relative group">
                           <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                          <input 
+                          <input
                             required
                             name="fullName"
                             value={formData.fullName}
                             onChange={handleChange}
-                            type="text" 
+                            type="text"
                             placeholder="John Doe"
                             className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
                           />
@@ -177,12 +171,12 @@ export default function Contact() {
                         <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Business Email</label>
                         <div className="relative group">
                           <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                          <input 
+                          <input
                             required
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            type="email" 
+                            type="email"
                             placeholder="john@company.com"
                             className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
                           />
@@ -194,12 +188,12 @@ export default function Contact() {
                       <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Phone Number</label>
                       <div className="relative group">
                         <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                        <input 
+                        <input
                           required
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          type="tel" 
+                          type="tel"
                           placeholder="+91 98765 43210"
                           className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
                         />
@@ -210,7 +204,7 @@ export default function Contact() {
                       <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Project Type</label>
                       <div className="relative group">
                         <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                        <select 
+                        <select
                           required
                           name="projectType"
                           value={formData.projectType}
@@ -232,7 +226,7 @@ export default function Contact() {
                       <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Project Details</label>
                       <div className="relative group">
                         <MessageSquare className="absolute left-4 top-6 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                        <textarea 
+                        <textarea
                           required
                           name="details"
                           value={formData.details}
@@ -273,7 +267,7 @@ export default function Contact() {
                     <p className="text-white/60 font-medium mb-8 max-w-[280px] mx-auto leading-relaxed">
                       Thank you for trusting BAI. Our team is reviewing your details and will call you back within 15 minutes.
                     </p>
-                    <button 
+                    <button
                       onClick={() => setIsSubmitted(false)}
                       className="text-white font-black uppercase text-sm tracking-widest hover:underline"
                     >
