@@ -1,82 +1,263 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Syne", sans-serif;
-  --font-body: "DM Sans", sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* HackCulture Vibrant Palette */
+  /* User Color Palette */
+  --color-brand-navy: #122C91;
+  --color-brand-navy-dark: #0A1B5E;
+  --color-brand-navy-light: #1E44B8;
+  
+  --color-brand-blue: #2A6FDB;
+  --color-brand-blue-hover: #1E5BC4;
+  
+  --color-brand-teal: #4ED4D2;
+  --color-brand-teal-light: #E6FBFB;
+  
+  --color-brand-sky: #81E9E6;
+  --color-brand-sky-subtle: #F0FDFA;
+  
+  --color-brand-cream: #FEFCBF;
+  --color-brand-cream-soft: #FFFDE8;
+
+  /* Surfaces & Neutrals */
   --color-background: #FFFFFF;
-  --color-foreground: #111827;
-    
-  --color-accent-indigo: #4953F5;
-  --color-accent-purple: #8B5CF6;
-  --color-accent-blue: #3B82F6;
-  --color-accent-cyan: #06B6D4;
+  --color-surface-subtle: #F8FAFC;
+  --color-surface-muted: #F1F5F9;
+  --color-surface-card: #FFFFFF;
   
-  --color-card: #FFFFFF;
-  --color-card-foreground: #111827;
-  
-  --color-muted: #4B5563;
-  --color-muted-foreground: #6B7280;
-  
-  --color-border-subtle: #E5E7EB;
-  --color-border-emphasis: #D1D5DB;
+  --color-foreground: #0F172A;
+  --color-foreground-muted: #475569;
+  --color-foreground-light: #64748B;
 
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  --color-border-subtle: #E2E8F0;
+  --color-border-strong: #CBD5E1;
 }
 
 @layer base {
+  * {
+    border-color: var(--color-border-subtle);
+  }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-accent-indigo selection:text-white;
+    background-color: #FFFFFF;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+/* Completely hide the floating Next.js 'N' dev indicator badge */
+[data-nextjs-dev-indicator],
+[data-nextjs-toast],
+nextjs-portal,
+#next-logo-badge {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Floating Animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(9px) rotate(-0.4deg);
+  }
+}
+
+@keyframes float-partner-1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes float-partner-2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes float-partner-3 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes ambient-fade {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes orb-pulse-1 {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.18) translate(30px, -20px);
+    opacity: 0.65;
+  }
+}
+
+@keyframes orb-pulse-2 {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.22) translate(-25px, 25px);
+    opacity: 0.6;
   }
 }
 
 @layer utilities {
-  .grid-background {
+  /* Architectural Background Textures */
+  .texture-grid,
+  .texture-grid-lines {
     background-image: 
-      linear-gradient(to right, rgba(229, 231, 235, 0.5) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(229, 231, 235, 0.5) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(to right, rgba(18, 44, 145, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(18, 44, 145, 0.08) 1px, transparent 1px);
+    background-size: 36px 36px;
+    background-repeat: repeat;
   }
 
-  .grid-overlay-white {
+  .texture-dots {
+    background-image: radial-gradient(rgba(18, 44, 145, 0.12) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    background-repeat: repeat;
+  }
+
+  .texture-dots-subtle {
+    background-image: radial-gradient(rgba(18, 44, 145, 0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-repeat: repeat;
+  }
+
+  /* One Unified, Continuous Ambient Canvas (Zero Section Seams + Structural Grid Texture) */
+  .unified-ambient-canvas {
+    background-color: #FFFFFF;
     background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(to right, rgba(18, 44, 145, 0.075) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(18, 44, 145, 0.075) 1px, transparent 1px),
+      linear-gradient(
+        180deg,
+        #FFFFFF 0%,
+        #F4FCFD 8%,
+        #E8FAFA 16%,
+        #F0FCFC 24%,
+        #FFFDF2 34%,
+        #FEFDC6 44%,
+        #FFFDF4 54%,
+        #F5F9FD 68%,
+        #FFFFFF 80%
+      );
+    background-size: 36px 36px, 36px 36px, 100% 100%;
+    background-repeat: repeat, repeat, no-repeat;
   }
 
-  .hero-glow-indigo {
-    background: radial-gradient(circle at center, rgba(73, 83, 245, 0.15) 0%, transparent 70%);
+  /* Floating Card Utilities */
+  .floating-container {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 
+      0 20px 45px -10px rgba(18, 44, 145, 0.12),
+      0 8px 16px -4px rgba(18, 44, 145, 0.06);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .hero-gradient-vibrant {
-    background: linear-gradient(135deg, #4953F5 0%, #8B5CF6 50%, #3B82F6 100%);
+  .floating-container:hover {
+    box-shadow: 
+      0 28px 60px -12px rgba(18, 44, 145, 0.18),
+      0 12px 24px -6px rgba(18, 44, 145, 0.08);
   }
 
-  .glass-card {
-    @apply bg-white/70 backdrop-blur-md border border-white shadow-sm;
+  /* Transparent Floating Glassmorphic Container */
+  .transparent-floating-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(240, 253, 250, 0.55) 50%, rgba(255, 253, 240, 0.65) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 
+      0 16px 36px -8px rgba(18, 44, 145, 0.09),
+      0 4px 12px -2px rgba(0, 0, 0, 0.03),
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .text-gradient-indigo {
-    background: linear-gradient(135deg, #4953F5 0%, #06B6D4 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .transparent-floating-card:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(230, 251, 251, 0.8) 100%);
+    border-color: rgba(78, 212, 210, 0.6);
+    box-shadow: 
+      0 24px 50px -10px rgba(18, 44, 145, 0.16),
+      0 8px 20px -4px rgba(78, 212, 210, 0.2);
   }
-}
 
-/* Animations */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+  .float-partner-1 {
+    animation: float-partner-1 6.5s ease-in-out infinite;
+  }
 
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
+  .float-partner-2 {
+    animation: float-partner-2 8s ease-in-out infinite 0.7s;
+  }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+  .float-partner-3 {
+    animation: float-partner-3 7.2s ease-in-out infinite 1.4s;
+  }
+
+  .color-fade-dark {
+    background: linear-gradient(135deg, #0A1B5E 0%, #122C91 30%, #1A3EAE 60%, #0D206B 100%);
+    background-size: 300% 300%;
+    animation: ambient-fade 18s ease infinite;
+  }
+
+  .orb-1 {
+    animation: orb-pulse-1 10s ease-in-out infinite;
+  }
+
+  .orb-2 {
+    animation: orb-pulse-2 13s ease-in-out infinite;
+  }
+
+  .cream-badge {
+    background-color: #FEFCBF;
+    color: #0A1B5E;
+    border: 1px solid rgba(18, 44, 145, 0.12);
+  }
+
+  .teal-badge {
+    background-color: #E6FBFB;
+    color: #0A1B5E;
+    border: 1px solid rgba(78, 212, 210, 0.5);
+  }
 }

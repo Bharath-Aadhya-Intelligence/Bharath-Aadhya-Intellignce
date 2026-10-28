@@ -1,174 +1,136 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Globe, Users, Mail, Phone, MapPin, Send, Plus, createLucideIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-
-// Custom icons due to missing brand icons in this version of lucide-react
-const Linkedin = createLucideIcon('Linkedin', [
-  ['path', { d: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z', key: '1' }],
-  ['rect', { width: '4', height: '12', x: '2', y: '9', key: '2' }],
-  ['circle', { cx: '4', cy: '4', r: '2', key: '3' }],
-]);
-
-const Instagram = createLucideIcon('Instagram', [
-  ['rect', { width: '20', height: '20', x: '2', y: '2', rx: '5', ry: '5', key: '1' }],
-  ['path', { d: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z', key: '2' }],
-  ['line', { x1: '17.5', x2: '17.51', y1: '6.5', y2: '6.5', key: '3' }],
-]);
-
-const Twitter = createLucideIcon('Twitter', [
-  ['path', { d: 'm4 4 11.733 16H20L8.267 4z', key: '1' }],
-  ['path', { d: 'm4 20 6.768-6.768', key: '2' }],
-  ['path', { d: 'm13.277 10.723 6.723-6.723', key: '3' }]
-]);
-
-const Youtube = createLucideIcon('Youtube', [
-  ['path', { d: 'M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2 103.38 103.38 0 0 1 15 0 2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2 103.38 103.38 0 0 1-15 0 2 2 0 0 1-2-2z', key: '1' }],
-  ['path', { d: 'm10 15 5-3-5-3z', key: '2' }]
-]);
-
-const companyLinks = [
-  { name: "Programs", href: "#programs" },
-  { name: "Services", href: "#services" },
-  { name: "Impact", href: "#about" },
-  { name: "Community", href: "#" },
-];
-
-const supportLinks = [
-  { name: "Contact Us", href: "#contact" },
-  { name: "Privacy Policy", href: "#" },
-  { name: "Terms of Service", href: "#" },
-  { name: "FAQs", href: "#" },
-];
-
-const socialLinks = [
-  { icon: Mail, href: "mailto:bharathaadhyaintelligence@gmail.com", name: "Email" },
-];
-
+import { Mail, MapPin, ArrowUp, ShieldCheck } from "lucide-react";
 import LogoImg from "../../public/Logo.jpeg";
 
-export default function Footer() {
-  return (
-    <footer className="bg-white pt-24 pb-12 border-t border-border-subtle relative overflow-hidden">
-      {/* Subtle Grid Background */}
-      <div className="absolute inset-0 grid-background opacity-[0.05] pointer-events-none" />
+const serviceLinks = [
+  { name: "Enterprise Web Engineering", href: "#services" },
+  { name: "Mobile Application Development", href: "#services" },
+  { name: "Cloud Architecture & DevOps", href: "#services" },
+  { name: "Custom AI & Automation", href: "#services" },
+  { name: "Legacy Modernization", href: "#services" },
+  { name: "Dedicated Engineering Pods", href: "#services" },
+];
 
-      <div className="container relative z-10 mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-8 group">
-              <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm overflow-hidden p-1.5">
-                <Image 
-                  src={LogoImg} 
-                  alt="Bharath Aadhya Intelligence Logo" 
-                  className="w-full h-full object-contain" 
+const companyLinks = [
+  { name: "About Bharath Aadhya Intelligence", href: "#about" },
+  { name: "Why Enterprises Choose Us", href: "#about" },
+  { name: "Institutional Collaborators", href: "#partners" },
+  { name: "Our Delivery Framework", href: "#about" },
+  { name: "Request a Proposal", href: "#contact" },
+];
+
+export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <footer className="bg-brand-navy-dark text-white pt-16 pb-12 border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-white/10">
+          
+          {/* Brand & Corporate Overview (5 cols) */}
+          <div className="lg:col-span-5">
+            <Link href="/" className="flex items-center gap-3.5 mb-5 group">
+              <div className="w-11 h-11 rounded-lg bg-white p-1 flex items-center justify-center overflow-hidden shadow-xs">
+                <Image
+                  src={LogoImg}
+                  alt="Bharath Aadhya Intelligence"
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <div className="flex flex-col leading-tight">
-                <span className="font-display font-black text-xl text-foreground tracking-tight uppercase">
-                  Bharath Aadhya
+              <div className="flex flex-col">
+                <span className="font-bold text-lg text-white leading-snug">
+                  Bharath Aadhya Intelligence
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-muted font-bold -mt-1">
-                  Intelligence
+                <span className="text-[11px] tracking-wide uppercase text-brand-sky font-semibold">
+                  Enterprise IT Solutions
                 </span>
               </div>
             </Link>
-            <p className="text-muted font-medium mb-8 leading-relaxed">
-              Accelerating innovation from vision to value through a global ecosystem of builders and enterprise challenges.
+
+            <p className="text-xs text-white/70 leading-relaxed max-w-sm mb-6">
+              Bharath Aadhya Intelligence delivers robust software engineering, scalable cloud infrastructure, and intelligent automation systems that power enterprise growth.
             </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <Link
-                  key={social.name}
-                  href={social.href}
-                  className="p-3 rounded-xl border border-border-subtle text-muted hover:border-accent-indigo hover:text-accent-indigo transition-all group"
-                  aria-label={social.name}
+
+            <div className="space-y-2 text-xs text-white/80">
+              <div className="flex items-center gap-2.5">
+                <Mail size={14} className="text-brand-teal" />
+                <a
+                  href="mailto:bharathaadhyaintelligence@gmail.com"
+                  className="hover:text-brand-sky transition-colors"
                 >
-                  <social.icon size={20} className="group-hover:scale-110 transition-transform" />
-                </Link>
-              ))}
+                  bharathaadhyaintelligence@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <MapPin size={14} className="text-brand-teal" />
+                <span>Karnataka, India • National Operations</span>
+              </div>
             </div>
           </div>
 
-          {/* Links Columns */}
-          <div className="grid grid-cols-2 gap-8 lg:col-span-1 md:ml-auto">
-            <div>
-              <h4 className="text-xs font-black uppercase tracking-[0.2em] text-foreground mb-8">
-                Platform
-              </h4>
-              <ul className="space-y-4">
-                {companyLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-muted font-bold hover:text-accent-indigo transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-black uppercase tracking-[0.2em] text-foreground mb-8">
-                Connect
-              </h4>
-              <ul className="space-y-4">
-                {supportLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-muted font-bold hover:text-accent-indigo transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Newsletter Column */}
-          <div className="lg:col-span-2 lg:ml-auto max-w-sm w-full">
-            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-foreground mb-8">
-              Stay Updated
+          {/* Core Services Links (4 cols) */}
+          <div className="lg:col-span-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
+              Enterprise IT Services
             </h4>
-            <p className="text-muted font-medium mb-6">
-              Subscribe to get the latest innovation challenges and program updates directly in your inbox.
-            </p>
-            <form className="relative group">
-              <input
-                type="email"
-                placeholder="you@email.com"
-                className="w-full bg-white border-2 border-border-subtle rounded-2xl py-4 pl-6 pr-14 text-foreground font-bold placeholder:text-muted/50 focus:border-accent-indigo outline-none transition-all shadow-sm"
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-2 bottom-2 aspect-square bg-accent-indigo text-white rounded-xl flex items-center justify-center hover:shadow-lg transition-all active:scale-90"
-              >
-                <Send size={20} />
-              </button>
-            </form>
+            <ul className="space-y-2">
+              {serviceLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-xs text-white/70 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          {/* Company & Governance Links (3 cols) */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
+              Company & Standards
+            </h4>
+            <ul className="space-y-2">
+              {companyLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-xs text-white/70 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-12 border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-muted text-sm font-bold">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
+          <div>
             © {new Date().getFullYear()} Bharath Aadhya Intelligence. All rights reserved.
-          </p>
-          <div className="flex items-center gap-8">
-             <div className="flex items-center gap-2 text-muted font-bold text-sm">
-                <MapPin size={16} className="text-accent-indigo" />
-                Bengaluru, India
-             </div>
-             <div className="flex items-center gap-2 text-muted font-bold text-sm">
-                <Mail size={16} className="text-accent-indigo" />
-                bharathaadhyaintelligence@gmail.com
-             </div>
+          </div>
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-1.5 text-white/80">
+              <ShieldCheck size={14} className="text-brand-teal" />
+              100% Client IP Ownership &amp; NDA Assured
+            </span>
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-1 text-white/70 hover:text-white transition-colors"
+              aria-label="Back to Top"
+            >
+              <span>Back to Top</span>
+              <ArrowUp size={13} />
+            </button>
           </div>
         </div>
       </div>

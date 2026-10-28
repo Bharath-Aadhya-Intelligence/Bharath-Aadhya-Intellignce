@@ -1,284 +1,357 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Send,
-  User,
-  Mail,
-  Phone,
-  Briefcase,
-  MessageSquare,
-  CheckCircle2,
-  Sparkles,
-  AlertCircle
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-const projectTypes = [
-  "Website Development",
+const serviceCategories = [
+  "Enterprise Web Engineering",
   "Mobile App Development",
-  "AI / LLM Research",
-  "Product Incubation",
-  "Custom AI Integration",
+  "Cloud Architecture & DevOps",
+  "Custom AI & Automation",
+  "Dedicated Engineering Pod",
+  "IT Modernization & Consulting",
 ];
+
+const teamSizingMap: Record<string, { pod: string; timeline: string; focus: string }> = {
+  "Enterprise Web Engineering": {
+    pod: "1 Principal Architect + 2 Full-Stack Engineers + 1 QA Specialist",
+    timeline: "6 - 12 Weeks to Production Release",
+    focus: "Next.js Core, Microservices, PostgreSQL, and Automated CI/CD",
+  },
+  "Mobile App Development": {
+    pod: "1 Mobile Architect + 2 React Native/Flutter Devs + 1 UI/UX Lead",
+    timeline: "8 - 14 Weeks to App Store & Play Store",
+    focus: "Offline Sync Engine, Biometrics, and Native API Integrations",
+  },
+  "Cloud Architecture & DevOps": {
+    pod: "1 Senior Cloud Architect + 1 DevOps/SRE Engineer",
+    timeline: "3 - 6 Weeks for Multi-Region Setup & Audit",
+    focus: "Terraform IaC, Docker/Kubernetes, and Blue-Green Deployment",
+  },
+  "Custom AI & Automation": {
+    pod: "1 AI/ML Research Lead + 1 Data Engineer + 1 Backend Dev",
+    timeline: "4 - 10 Weeks for Model Tuning & Pipeline Integration",
+    focus: "Private Knowledge RAG, Vector Search, and Air-Gapped Security",
+  },
+  "Dedicated Engineering Pod": {
+    pod: "Custom Scale (3 - 8 Senior Full-Stack Engineers)",
+    timeline: "Sprint-to-Sprint (Bi-Weekly Milestones)",
+    focus: "Accelerating Internal Feature Roadmaps & Velocity",
+  },
+  "IT Modernization & Consulting": {
+    pod: "1 Enterprise Architect + 2 Senior Refactoring Devs",
+    timeline: "4 - 8 Weeks for Architecture Decoupling",
+    focus: "Monolith Migration, Security Hardening, and Database Optimization",
+  },
+};
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
-    projectType: "",
+    service: "Enterprise Web Engineering",
+    timeline: "Within 1-3 Months",
     details: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const currentEst = teamSizingMap[formData.service] || teamSizingMap["Enterprise Web Engineering"];
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError(null);
 
     try {
-      // GitHub Pages doesn't support Server Actions.
-      // Falling back to a mailto link for static compatibility.
-      const subject = `New Inquiry: ${formData.projectType} from ${formData.fullName}`;
-      const body = `Name: ${formData.fullName}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0AProject: ${formData.projectType}%0D%0A%0D%0ADetails:%0D%0A${formData.details}`;
+      const subject = `BAI IT Consultation Request: ${formData.service} — ${formData.fullName}`;
+      const body = `Name: ${formData.fullName}
+Email: ${formData.email}
+Phone: ${formData.phone || "Not provided"}
+Required Service: ${formData.service}
+Target Timeline: ${formData.timeline}
+Suggested Pod Scale: ${currentEst.pod}
 
-      window.location.href = `mailto:bharathaadhyaintelligence@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body).replace(/%0A/g, "%0D%0A")}`;
+Project Scope & Architecture Requirements:
+${formData.details}`;
+
+      window.location.href = `mailto:bharathaadhyaintelligence@gmail.com?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
 
       setIsSubmitted(true);
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        projectType: "",
-        details: "",
-      });
     } catch {
-      setError("An unexpected error occurred. Please try again later.");
+      alert("Please email us directly at bharathaadhyaintelligence@gmail.com");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <section id="contact" className="relative py-24 hero-gradient-vibrant overflow-hidden">
-      {/* Background Grid */}
-      <div className="absolute inset-0 grid-overlay-white opacity-[0.2]" />
+    <section id="contact" className="py-24 bg-transparent relative overflow-hidden">
+      {/* Background ambient orbs */}
+      <div className="absolute top-1/3 left-10 w-[450px] h-[450px] bg-brand-sky/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-brand-teal/15 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container relative z-10 mx-auto px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full teal-badge text-[11px] font-bold uppercase tracking-wider mb-4 shadow-xs">
+            <span>Project Scoping &amp; Estimation</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">
+            Request an IT Consultation &amp; Engineering Estimate
+          </h2>
+          <p className="text-base text-slate-600 leading-relaxed">
+            Select your desired service to inspect recommended engineering pod structures and submit your technical scope.
+          </p>
+        </div>
 
-            {/* Left Content */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] font-black uppercase tracking-wider mb-6">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+          
+          {/* Left Column: Pod Estimation & Corporate Details (Floating Container) */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            {/* Live Interactive Pod Estimator Card */}
+            <div className="floating-container rounded-2xl p-7 relative">
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                <span className="text-xs font-bold uppercase tracking-wider text-brand-navy">
+                  Recommended Pod Composition
+                </span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-teal-light text-brand-navy">
+                  Dynamic Sizing
+                </span>
+              </div>
+
+              <div className="space-y-4 text-xs">
+                <div>
+                  <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">
+                    Selected Domain:
                   </span>
-                  Live Availability: Responses in 15m
+                  <span className="font-extrabold text-sm text-brand-navy">
+                    {formData.service}
+                  </span>
                 </div>
 
-                <h2 className="text-4xl md:text-6xl lg:text-5xl xl:text-6xl font-display font-black text-white mb-6 tracking-tight leading-[1.1] uppercase">
-                  LET&apos;S BUILD THE <span className="text-white italic">FUTURE</span> TOGETHER
-                </h2>
-                <p className="text-lg text-white/70 font-medium mb-10 leading-relaxed">
-                  Ready to start your next big project? Whether it&apos;s a cutting-edge AI model, a high-performance mobile app, or a scalable web ecosystem, our team is ready to scale with you in real time.
-                </p>
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">
+                    Suggested Engineering Team:
+                  </span>
+                  <span className="font-bold text-slate-800 text-xs leading-relaxed block">
+                    {currentEst.pod}
+                  </span>
+                </div>
 
-                <div className="space-y-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white/90">
-                      <Sparkles size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-display font-black text-white uppercase text-sm tracking-widest">Expert AI Engineering</h4>
-                      <p className="text-xs text-white/60 font-medium">Domain-specific Indian LLM research & integration.</p>
-                    </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3 rounded-lg bg-slate-50 border border-slate-200/80">
+                    <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                      Target Velocity:
+                    </span>
+                    <span className="font-bold text-brand-navy text-[11px] mt-0.5 block">
+                      {currentEst.timeline}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white/90">
-                      <Briefcase size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-display font-black text-white uppercase text-sm tracking-widest">Full-Stack Excellence</h4>
-                      <p className="text-xs text-white/60 font-medium">Premium Mobile & Web development services.</p>
-                    </div>
+
+                  <div className="p-3 rounded-lg bg-slate-50 border border-slate-200/80">
+                    <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                      Response SLA:
+                    </span>
+                    <span className="font-bold text-emerald-700 text-[11px] mt-0.5 block">
+                      &lt; 24h Guaranteed
+                    </span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
+
+              <div className="mt-5 pt-4 border-t border-slate-100 text-[11px] text-slate-500 font-medium">
+                100% Client IP Ownership &amp; Mutual NDA Assured
+              </div>
             </div>
 
-            {/* Contact Form Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 0.90 }}
-              viewport={{ once: true }}
-              className="relative p-8 md:p-12 bg-white/10 backdrop-blur-3xl rounded-[2.5rem] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden"
-            >
-              {/* Card Ambient Glow */}
-              <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/10 blur-[80px] rounded-full pointer-events-none" />
+            {/* Direct Contact Floating Card */}
+            <div className="floating-container rounded-2xl p-6 space-y-4 text-xs">
+              <div>
+                <span className="text-[11px] font-bold uppercase text-slate-500 block mb-0.5">
+                  Corporate Email
+                </span>
+                <a
+                  href="mailto:bharathaadhyaintelligence@gmail.com"
+                  className="font-semibold text-brand-navy hover:text-brand-blue transition-colors text-sm"
+                >
+                  bharathaadhyaintelligence@gmail.com
+                </a>
+              </div>
 
-              <AnimatePresence mode="wait">
-                {!isSubmitted ? (
-                  <motion.form
-                    key="form"
-                    onSubmit={handleSubmit}
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="relative z-10 space-y-8"
-                  >
-                    {error && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-200 text-sm font-bold"
-                      >
-                        <AlertCircle size={18} />
-                        {error}
-                      </motion.div>
-                    )}
+              <div className="pt-3 border-t border-slate-100">
+                <span className="text-[11px] font-bold uppercase text-slate-500 block mb-0.5">
+                  Operations Base
+                </span>
+                <span className="font-medium text-slate-700">
+                  Karnataka, India (National &amp; Global Remote)
+                </span>
+              </div>
+            </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Full Name</label>
-                        <div className="relative group">
-                          <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                          <input
-                            required
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleChange}
-                            type="text"
-                            placeholder="John Doe"
-                            className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
-                          />
-                        </div>
-                      </div>
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Business Email</label>
-                        <div className="relative group">
-                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                          <input
-                            required
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            type="email"
-                            placeholder="john@company.com"
-                            className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Phone Number</label>
-                      <div className="relative group">
-                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                        <input
-                          required
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          type="tel"
-                          placeholder="+91 98765 43210"
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Project Type</label>
-                      <div className="relative group">
-                        <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                        <select
-                          required
-                          name="projectType"
-                          value={formData.projectType}
-                          onChange={handleChange}
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white appearance-none cursor-pointer placeholder:text-white/20"
-                        >
-                          <option value="" disabled className="text-foreground">Select a service</option>
-                          {projectTypes.map(type => (
-                            <option key={type} value={type} className="text-foreground">{type}</option>
-                          ))}
-                        </select>
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/30">
-                          ▼
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Project Details</label>
-                      <div className="relative group">
-                        <MessageSquare className="absolute left-4 top-6 text-white/30 group-focus-within:text-white transition-colors" size={18} />
-                        <textarea
-                          required
-                          name="details"
-                          value={formData.details}
-                          onChange={handleChange}
-                          rows={4}
-                          placeholder="Tell us about your vision..."
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-5 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20 resize-none"
-                        ></textarea>
-                      </div>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-5 bg-white text-accent-indigo rounded-2xl font-black text-lg tracking-tight flex items-center justify-center gap-3 hover:shadow-[0_10px_30px_rgba(255,255,255,0.2)] transition-all active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed group shadow-xl"
-                    >
-                      {isSubmitting ? (
-                        <div className="w-6 h-6 border-4 border-accent-indigo/20 border-t-accent-indigo rounded-full animate-spin" />
-                      ) : (
-                        <>
-                          <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                          Send Inquiry
-                        </>
-                      )}
-                    </button>
-                  </motion.form>
-                ) : (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="relative z-10 text-center py-20"
-                  >
-                    <div className="w-20 h-20 bg-white/10 text-white rounded-full flex items-center justify-center mx-auto mb-8">
-                      <CheckCircle2 size={40} />
-                    </div>
-                    <h3 className="text-3xl font-display font-black text-white mb-4 uppercase tracking-tight">Request Received!</h3>
-                    <p className="text-white/60 font-medium mb-8 max-w-[280px] mx-auto leading-relaxed">
-                      Thank you for trusting BAI. Our team is reviewing your details and will call you back within 15 minutes.
-                    </p>
-                    <button
-                      onClick={() => setIsSubmitted(false)}
-                      className="text-white font-black uppercase text-sm tracking-widest hover:underline"
-                    >
-                      Send another request
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
           </div>
+
+          {/* Right Column: Structured Consultation Form (Floating Container) */}
+          <div className="lg:col-span-7">
+            <div className="floating-container rounded-2xl p-8 sm:p-10">
+              {isSubmitted ? (
+                <div className="text-center py-12">
+                  <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-4 border border-emerald-200">
+                    <CheckCircle2 size={32} />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    Proposal Request Initialized
+                  </h3>
+                  <p className="text-sm text-slate-600 max-w-md mx-auto mb-6 leading-relaxed">
+                    Your email client should open with your consultation details and suggested team sizing. If it did not open automatically, please reach us directly at{" "}
+                    <a
+                      href="mailto:bharathaadhyaintelligence@gmail.com"
+                      className="font-semibold text-brand-blue underline"
+                    >
+                      bharathaadhyaintelligence@gmail.com
+                    </a>.
+                  </p>
+                  <button
+                    onClick={() => setIsSubmitted(false)}
+                    className="px-6 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition-colors cursor-pointer"
+                  >
+                    Submit Another Request
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Service Category */}
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                      Primary Service Required *
+                    </label>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all font-medium"
+                    >
+                      {serviceCategories.map((cat) => (
+                        <option key={cat} value={cat}>
+                          {cat}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Name and Email */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                        Full Name / Contact Person *
+                      </label>
+                      <input
+                        type="text"
+                        name="fullName"
+                        required
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        placeholder="Rajesh Kumar"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                        Corporate / Work Email *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="rajesh@company.com"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Phone & Timeline */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                        Phone / WhatsApp (Optional)
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 98765 43210"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                        Target Timeline
+                      </label>
+                      <select
+                        name="timeline"
+                        value={formData.timeline}
+                        onChange={handleChange}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all font-medium"
+                      >
+                        <option value="Immediate (< 1 Month)">Immediate (&lt; 1 Month)</option>
+                        <option value="Within 1-3 Months">Within 1-3 Months</option>
+                        <option value="Long-term Roadmap (3+ Months)">Long-term Roadmap (3+ Months)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Details */}
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                      Project Overview &amp; Technical Requirements *
+                    </label>
+                    <textarea
+                      name="details"
+                      rows={4}
+                      required
+                      value={formData.details}
+                      onChange={handleChange}
+                      placeholder="Please describe your key business objectives, current system architecture (if any), expected user base, or specific technical integrations..."
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3.5 text-sm text-slate-900 focus:outline-none focus:border-brand-blue focus:bg-white transition-all resize-none leading-relaxed"
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 rounded-lg bg-brand-blue hover:bg-brand-navy text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg active:scale-98 cursor-pointer"
+                  >
+                    <span>{isSubmitting ? "Opening Mail Client..." : "Submit Project Inquiry"}</span>
+                    <ArrowRight size={15} />
+                  </button>
+                  <p className="text-[11px] text-slate-500 text-center">
+                    All inquiries are held in strict confidence under our mutual NDA terms.
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+
         </div>
+
       </div>
     </section>
   );

@@ -2,23 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Plus } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import LogoImg from "../../public/Logo.jpeg";
 
 const navLinks = [
-  { name: "AI Research", href: "#ai" },
   { name: "Services", href: "#services" },
-  { name: "Portfolio", href: "#portfolio" },
+  { name: "Why Us", href: "#about" },
+  { name: "Clients", href: "#partners" },
+  { name: "Contact", href: "#contact" },
 ];
-
-import LogoImg from "../../public/Logo.jpeg";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,127 +20,113 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-        isScrolled ? "bg-white/90 backdrop-blur-md border-b border-border-subtle" : "bg-transparent"
-      )}
-    >
-      <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm overflow-hidden p-1.5">
-            <Image 
-              src={LogoImg} 
-              alt="Bharath Aadhya Intelligence Logo" 
-              className="w-full h-full object-contain" 
-            />
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className={cn(
-              "font-display font-black text-xl tracking-tight transition-colors duration-300",
-              isScrolled ? "text-foreground" : "text-white"
-            )}>
-              Bharath Aadhya
-            </span>
-            <span className={cn(
-              "text-[9px] uppercase tracking-[0.2em] font-bold -mt-1 transition-colors duration-300",
-              isScrolled ? "text-muted" : "text-white/70"
-            )}>
-              Intelligence
-            </span>
-          </div>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={cn(
-                "text-sm font-bold transition-colors duration-300",
-                isScrolled ? "text-muted hover:text-accent-indigo" : "text-white/90 hover:text-white"
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop CTAs */}
-        <div className="hidden md:flex items-center gap-4">
-          <Link
-            href="#contact"
-            className="flex items-center gap-2 px-5 py-2 bg-accent-indigo text-white rounded-lg text-sm font-bold hover:shadow-lg transition-all active:scale-95 hover:bg-accent-indigo/90"
-          >
-            <Plus size={16} />
-            Start a Project
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-200">
+      {/* Clean Modern Corporate Navbar */}
+      <div
+        className={`transition-all duration-200 ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3.5"
+            : "bg-white/80 backdrop-blur-md border-b border-slate-100/60 py-4"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
+          {/* Logo & Identity */}
+          <Link href="/" className="flex items-center gap-3.5 group">
+            <div className="w-11 h-11 rounded-lg border border-slate-200 bg-white p-1 flex items-center justify-center overflow-hidden shadow-xs">
+              <Image
+                src={LogoImg}
+                alt="Bharath Aadhya Intelligence"
+                className="w-full h-full object-contain"
+                priority
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-bold text-base sm:text-lg tracking-tight text-brand-navy leading-snug group-hover:text-brand-blue transition-colors">
+                Bharath Aadhya Intelligence
+              </span>
+              <span className="text-[11px] tracking-wide uppercase text-slate-500 font-semibold">
+                Enterprise IT Solutions
+              </span>
+            </div>
           </Link>
-          <Link
-            href="#login"
-            className={cn(
-              "px-5 py-2 border rounded-lg text-sm font-bold transition-all",
-              isScrolled 
-                ? "border-border-emphasis text-foreground hover:bg-black/5" 
-                : "border-white/30 text-white hover:bg-white/10"
-            )}
-          >
-            Sign In
-          </Link>
-        </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white border-b border-border-subtle p-6 flex flex-col gap-6 md:hidden shadow-xl"
-          >
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-lg font-bold text-foreground"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-sm font-semibold text-slate-700 hover:text-brand-navy transition-colors py-1"
               >
                 {link.name}
               </Link>
             ))}
-            <div className="flex flex-col gap-3 pt-4 border-t border-border-subtle">
-              <Link
-                href="#contact"
-                className="flex items-center justify-center gap-2 w-full py-3 bg-accent-indigo text-white rounded-xl font-bold"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <Plus size={18} />
-                Start a Project
-              </Link>
-              <Link
-                href="#login"
-                className="w-full py-3 border border-border-emphasis text-center rounded-xl font-bold text-foreground"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Sign In
-              </Link>
+          </nav>
+
+          {/* Action Button */}
+          <div className="hidden sm:flex items-center gap-3">
+            <Link
+              href="#contact"
+              className="px-5 py-2.5 rounded-lg bg-brand-blue hover:bg-brand-navy text-white text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow flex items-center gap-2 group"
+            >
+              <span>Request Consultation</span>
+              <ArrowRight
+                size={14}
+                className="group-hover:translate-x-0.5 transition-transform"
+              />
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex lg:hidden items-center">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+              aria-label="Toggle Menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-white/95 backdrop-blur-md border-b border-slate-200 px-6 py-6 shadow-xl"
+          >
+            <div className="flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-base font-semibold text-slate-800 hover:text-brand-navy py-1 border-b border-slate-100 flex items-center justify-between"
+                >
+                  <span>{link.name}</span>
+                  <ChevronRight size={16} className="text-slate-400" />
+                </Link>
+              ))}
+              <div className="pt-2">
+                <Link
+                  href="#contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full py-3 rounded-lg bg-brand-blue text-white text-center font-semibold text-sm block"
+                >
+                  Request Consultation
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

@@ -1,71 +1,60 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, FileText, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
-const trustItems = [
-  "Expert AI Engineers",
-  "Full-Stack Excellence",
-  "Strategic Innovation",
+const guarantees = [
+  "Non-Disclosure Agreement (NDA) Protected",
+  "Milestone-Based Transparent Deliverables",
+  "Complete Codebase & IP Ownership",
+  "Post-Launch Technical Support Retainers",
 ];
 
 export default function CTA() {
   return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="container px-6 mx-auto">
-        <div className="relative rounded-[3rem] bg-accent-indigo p-12 md:p-24 overflow-hidden border border-accent-indigo shadow-2xl">
-          {/* Subtle Grid Overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
- 
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-16">
-            <div className="max-w-2xl text-center md:text-left">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-4xl md:text-6xl font-display font-black text-white mb-8 tracking-tight leading-[1.1] uppercase"
-              >
-                READY TO BUILD THE FUTURE?
-              </motion.h2>
-              <div className="flex flex-wrap justify-center md:justify-start gap-6">
-                {trustItems.map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center gap-2 text-white/90 font-bold text-sm tracking-wide"
-                  >
-                    <CheckCircle2 size={18} className="text-white" />
-                    {item}
-                  </motion.div>
+    <section className="py-20 bg-transparent">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="rounded-2xl color-fade-dark text-white p-8 sm:p-14 lg:p-16 shadow-xl relative overflow-hidden border border-white/10">
+          {/* Ambient Fade Orbs */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-sky/25 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20 orb-1" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-teal/20 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20 orb-2" />
+
+          <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+            <div className="max-w-2xl">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-teal block mb-2">
+                Enterprise Partnership
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-4 leading-snug">
+                Ready to Accelerate Your Enterprise IT Roadmap?
+              </h2>
+              <p className="text-sm sm:text-base text-white/80 leading-relaxed mb-8">
+                Connect with our principal architects to discuss your custom web application, enterprise mobile ecosystem, or dedicated engineering pod.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {guarantees.map((item) => (
+                  <div key={item} className="flex items-center gap-2 text-xs font-medium text-white/90">
+                    <CheckCircle2 size={15} className="text-brand-teal shrink-0" />
+                    <span>{item}</span>
+                  </div>
                 ))}
               </div>
             </div>
- 
-            <div className="flex flex-col gap-5 w-full md:w-auto">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-              >
-                <Link
-                  href="#contact"
-                  className="flex items-center justify-center gap-3 px-12 py-6 bg-white text-accent-indigo rounded-2xl font-black text-lg tracking-tight hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)] transition-all active:scale-95 group shadow-xl"
-                >
-                  <Calendar size={24} />
-                  Start Your Project
-                  <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
+
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3.5 w-full lg:w-auto shrink-0">
               <Link
-                href="#ai"
-                className="flex items-center justify-center gap-3 px-12 py-6 border-2 border-white/30 text-white rounded-2xl font-black text-lg tracking-tight hover:bg-white/10 transition-all text-center"
+                href="#contact"
+                className="px-8 py-3.5 rounded-lg bg-brand-cream hover:bg-white text-brand-navy font-bold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-md active:scale-98"
               >
-                <FileText size={24} />
-                Explore AI Research
+                <span>Request Project Proposal</span>
+                <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="#services"
+                className="px-8 py-3.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm flex items-center justify-center transition-all duration-300 text-center"
+              >
+                Browse Core Capabilities
               </Link>
             </div>
           </div>

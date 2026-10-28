@@ -1,22 +1,13 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["800"],
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-});
-
 export const metadata: Metadata = {
-  title: "Bharath Aadhya Intelligence - Empowering the Smarter India",
-  description: "Bharath Aadhya Intelligence (BAI) delivers end-to-end IT services that drive digital transformation, accelerate growth, and build the technology backbone of tomorrow's India.",
+  title: "Bharath Aadhya Intelligence — Enterprise IT Solutions & Software Engineering",
+  description:
+    "Bharath Aadhya Intelligence provides enterprise-grade IT services, custom software engineering, cloud architectures, and intelligent digital solutions for growing enterprises.",
+  icons: {
+    icon: "/icon.jpeg",
+  },
 };
 
 export default function RootLayout({
@@ -25,11 +16,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${syne.variable} ${dmSans.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className="h-full antialiased scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-background text-foreground font-sans selection:bg-brand-teal/30 selection:text-brand-navy">
+        {children}
+      </body>
     </html>
   );
 }
