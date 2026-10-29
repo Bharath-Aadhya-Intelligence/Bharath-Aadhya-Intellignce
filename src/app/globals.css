@@ -59,52 +59,6 @@ nextjs-portal,
   pointer-events: none !important;
 }
 
-/* Floating Animations */
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(0.4deg);
-  }
-}
-
-@keyframes float-delayed {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(9px) rotate(-0.4deg);
-  }
-}
-
-@keyframes float-partner-1 {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-9px);
-  }
-}
-
-@keyframes float-partner-2 {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(8px);
-  }
-}
-
-@keyframes float-partner-3 {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-7px);
-  }
-}
-
 @keyframes ambient-fade {
   0% {
     background-position: 0% 50%;
@@ -140,35 +94,13 @@ nextjs-portal,
 }
 
 @layer utilities {
-  /* Architectural Background Textures */
-  .texture-grid,
-  .texture-grid-lines {
-    background-image: 
-      linear-gradient(to right, rgba(18, 44, 145, 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(18, 44, 145, 0.08) 1px, transparent 1px);
-    background-size: 36px 36px;
-    background-repeat: repeat;
-  }
-
-  .texture-dots {
-    background-image: radial-gradient(rgba(18, 44, 145, 0.12) 1.5px, transparent 1.5px);
-    background-size: 24px 24px;
-    background-repeat: repeat;
-  }
-
-  .texture-dots-subtle {
-    background-image: radial-gradient(rgba(18, 44, 145, 0.08) 1px, transparent 1px);
-    background-size: 20px 20px;
-    background-repeat: repeat;
-  }
-
   .texture-dots-modern {
     background-image: radial-gradient(rgba(18, 44, 145, 0.12) 1.2px, transparent 1.2px);
     background-size: 24px 24px;
     background-repeat: repeat;
   }
 
-  /* One Unified, Continuous Ambient Canvas (Smooth, seamless ambient lighting) */
+  /* Unified Ambient Canvas */
   .unified-ambient-canvas {
     background-color: #FFFFFF;
     background-image: 
@@ -204,39 +136,6 @@ nextjs-portal,
     box-shadow: 
       0 28px 60px -12px rgba(18, 44, 145, 0.18),
       0 12px 24px -6px rgba(18, 44, 145, 0.08);
-  }
-
-  /* Transparent Floating Glassmorphic Container */
-  .transparent-floating-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(240, 253, 250, 0.55) 50%, rgba(255, 253, 240, 0.65) 100%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 
-      0 16px 36px -8px rgba(18, 44, 145, 0.09),
-      0 4px 12px -2px rgba(0, 0, 0, 0.03),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .transparent-floating-card:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(230, 251, 251, 0.8) 100%);
-    border-color: rgba(78, 212, 210, 0.6);
-    box-shadow: 
-      0 24px 50px -10px rgba(18, 44, 145, 0.16),
-      0 8px 20px -4px rgba(78, 212, 210, 0.2);
-  }
-
-  .float-partner-1 {
-    animation: float-partner-1 6.5s ease-in-out infinite;
-  }
-
-  .float-partner-2 {
-    animation: float-partner-2 8s ease-in-out infinite 0.7s;
-  }
-
-  .float-partner-3 {
-    animation: float-partner-3 7.2s ease-in-out infinite 1.4s;
   }
 
   .color-fade-dark {

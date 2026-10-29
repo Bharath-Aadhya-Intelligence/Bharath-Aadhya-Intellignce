@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Partners from "@/components/Partners";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import CTA from "@/components/CTA";
@@ -19,7 +18,6 @@ export default function Home() {
       <div className="relative z-10">
         <Header />
         <Hero />
-        <Partners />
         <Services />
         <About />
         <CTA />
