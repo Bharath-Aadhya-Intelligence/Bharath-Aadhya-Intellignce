@@ -10,7 +10,7 @@ import LogoImg from "../../public/Logo.jpeg";
 const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Why Us", href: "#about" },
-  { name: "Clients", href: "#partners" },
+  { name: "Clients", href: "#clients" },
   { name: "Contact", href: "#contact" },
 ];
 

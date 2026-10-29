@@ -20,7 +20,7 @@ const serviceLinks = [
 const companyLinks = [
   { name: "About Us", href: "#about" },
   { name: "Why Choose Us", href: "#about" },
-  { name: "Collaborators", href: "#partners" },
+  { name: "Clients", href: "#clients" },
   { name: "Request a Proposal", href: "#contact" },
 ];
 
