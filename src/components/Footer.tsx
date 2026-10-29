@@ -5,24 +5,27 @@ import Image from "next/image";
 import { Mail, MapPin, ArrowUp, ShieldCheck } from "lucide-react";
 import LogoImg from "../../public/Logo.jpeg";
 
+// Email assembled at runtime to prevent static bot harvesting
+const getEmail = () =>
+  ["bharathaadhya", "intelligence", "\u0040", "gmail.com"].join("");
+
 const serviceLinks = [
-  { name: "Enterprise Web Engineering", href: "#services" },
-  { name: "Mobile Application Development", href: "#services" },
-  { name: "Cloud Architecture & DevOps", href: "#services" },
-  { name: "Custom AI & Automation", href: "#services" },
+  { name: "Web Engineering", href: "#services" },
+  { name: "Mobile Development", href: "#services" },
+  { name: "Cloud & DevOps", href: "#services" },
+  { name: "AI & Automation", href: "#services" },
   { name: "Legacy Modernization", href: "#services" },
-  { name: "Dedicated Engineering Pods", href: "#services" },
 ];
 
 const companyLinks = [
-  { name: "About Bharath Aadhya Intelligence", href: "#about" },
-  { name: "Why Enterprises Choose Us", href: "#about" },
-  { name: "Institutional Collaborators", href: "#partners" },
-  { name: "Our Delivery Framework", href: "#about" },
+  { name: "About Us", href: "#about" },
+  { name: "Why Choose Us", href: "#about" },
+  { name: "Collaborators", href: "#partners" },
   { name: "Request a Proposal", href: "#contact" },
 ];
 
 export default function Footer() {
+  const email = getEmail();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -53,17 +56,17 @@ export default function Footer() {
             </Link>
 
             <p className="text-xs text-white/70 leading-relaxed max-w-sm mb-6">
-              Bharath Aadhya Intelligence delivers robust software engineering, scalable cloud infrastructure, and intelligent automation systems that power enterprise growth.
+              Enterprise software engineering, cloud infrastructure, and intelligent automation for growing businesses.
             </p>
 
             <div className="space-y-2 text-xs text-white/80">
               <div className="flex items-center gap-2.5">
                 <Mail size={14} className="text-brand-teal" />
                 <a
-                  href="mailto:bharathaadhyaintelligence@gmail.com"
+                  href={`mailto:${email}`}
                   className="hover:text-brand-sky transition-colors"
                 >
-                  bharathaadhyaintelligence@gmail.com
+                  {email}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
@@ -76,7 +79,7 @@ export default function Footer() {
           {/* Core Services Links (4 cols) */}
           <div className="lg:col-span-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-              Enterprise IT Services
+              Services
             </h4>
             <ul className="space-y-2">
               {serviceLinks.map((link) => (
@@ -95,7 +98,7 @@ export default function Footer() {
           {/* Company & Governance Links (3 cols) */}
           <div className="lg:col-span-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-              Company & Standards
+              Company
             </h4>
             <ul className="space-y-2">
               {companyLinks.map((link) => (
@@ -121,7 +124,7 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 text-white/80">
               <ShieldCheck size={14} className="text-brand-teal" />
-              100% Client IP Ownership &amp; NDA Assured
+              NDA & Full IP Ownership
             </span>
             <button
               onClick={scrollToTop}

@@ -10,10 +10,10 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen unified-ambient-canvas relative overflow-hidden">
-      {/* Visible Structural Grid Texture Overlay across whole document */}
+      {/* Modern Micro-Dot Matrix Texture Overlay */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 texture-grid"
+        className="pointer-events-none absolute inset-0 z-0 texture-dots-modern"
       />
 
       <div className="relative z-10">
