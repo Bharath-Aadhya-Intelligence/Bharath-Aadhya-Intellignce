@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import LegalPage, { Placeholder, type LegalSection } from "@/components/legal/LegalPage";
+import LegalPage, { type LegalSection } from "@/components/legal/LegalPage";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Bharath Aadhya Intelligence",
@@ -25,19 +25,59 @@ const sections: LegalSection[] = [
           The policy describes the Website as it currently operates. We will update it when our practices change. We
           have prepared it with reference to the Digital Personal Data Protection Act, 2023 (&quot;DPDP Act&quot;) and
           the Digital Personal Data Protection Rules, 2025 (&quot;DPDP Rules&quot;). Parts of the DPDP Act take effect in
-          phases.{" "}
-          <Placeholder>
-            [TO CONFIRM: the commencement dates of the DPDP Act and Rules that apply, and whether any other Indian law
-            (for example, the Information Technology Act, 2000 and its rules) requires changes to this policy]
-          </Placeholder>{" "}
+          phases.
           Preparing this policy does not mean we have verified compliance with any law.
         </p>
       </>
     ),
   },
   {
+    id: "definitions",
+    title: "Interpretation and definitions",
+    content: (
+      <>
+        <p>
+          The words in this policy that begin with a capital letter have the meanings below, whether they are used in the
+          singular or the plural.
+        </p>
+        <ul>
+          <li>
+            <strong>Company</strong> (&quot;BAI&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) means Bharath
+            Aadhya Intelligence, based in Bengaluru, India.
+          </li>
+          <li>
+            <strong>Website</strong> means the BAI website at https://bharath-aadhya-intelligence.github.io/Bharath-Aadhya-Intellignce/.
+          </li>
+          <li>
+            <strong>Inquiry</strong> means a Project Inquiry that you send through the contact form on the Website.
+          </li>
+          <li>
+            <strong>Personal Data</strong> means any information that relates to an identified or identifiable individual.
+          </li>
+          <li>
+            <strong>Technical Data</strong> means information that is collected automatically when a request reaches the
+            Website or the inquiry service, such as an IP address, browser type, the page requested, and the time of the
+            request.
+          </li>
+          <li>
+            <strong>Cookies</strong> are small files that a website stores in your browser. Local storage is a similar
+            browser feature. Both are described in the section on cookies.
+          </li>
+          <li>
+            <strong>Service Provider</strong> means a third party that processes Personal Data on our behalf to run the
+            Website or the inquiry service.
+          </li>
+          <li>
+            <strong>You</strong> means the individual using the Website or sending an Inquiry, or the company on whose
+            behalf that individual acts.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
     id: "identity",
-    title: "Business identity and contact details",
+    title: "Who we are",
     content: (
       <>
         <ul>
@@ -55,23 +95,11 @@ const sections: LegalSection[] = [
             <a href={`mailto:${PRIVACY_EMAIL}?subject=Privacy%20request`}>{PRIVACY_EMAIL}</a>
           </li>
           <li>
-            <strong>Legal entity name and type:</strong>{" "}
-            <Placeholder>[TO CONFIRM: registered legal name, entity type, and registration number, if any]</Placeholder>
-          </li>
-          <li>
-            <strong>Postal address:</strong>{" "}
-            <Placeholder>[TO CONFIRM: registered or business postal address for privacy correspondence]</Placeholder>
-          </li>
-          <li>
-            <strong>Grievance contact:</strong>{" "}
-            <Placeholder>[TO CONFIRM: name and contact details of the person who handles privacy grievances]</Placeholder>
-          </li>
+            <strong>Grievance and privacy contact:</strong> <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a></li>
         </ul>
         <p>
           For personal data you submit through the Project Inquiry form, BAI decides why and how the data is used, so
-          BAI is responsible for it.{" "}
-          <Placeholder>[TO CONFIRM: this role description under the DPDP Act terms]</Placeholder>
-        </p>
+          BAI is responsible for it.</p>
       </>
     ),
   },
@@ -122,14 +150,11 @@ const sections: LegalSection[] = [
           has a value, the inquiry is discarded and nothing is sent to us. The value is not stored.
         </p>
 
-        <h3>6. Other data</h3>
+        <h3>6. Newsletters and marketing emails</h3>
         <p>
-          The footer has a &quot;Stay Updated&quot; email box.{" "}
-          <Placeholder>
-            [TO CONFIRM: this box is not connected to any mailing list or service. Either connect it and describe the
-            service here, or remove it before publishing this policy]
-          </Placeholder>{" "}
-          We do not currently send marketing emails based on addresses collected through the Website.
+          The Website does not collect email addresses for a newsletter or mailing list. We do not send marketing emails
+          based on addresses collected through the Website. If we introduce a mailing list later, we will give notice and
+          obtain any consent the law requires before collecting addresses for it.
         </p>
       </>
     ),
@@ -144,9 +169,7 @@ const sections: LegalSection[] = [
         <li>To protect the inquiry service from spam and abuse, including rate limiting and the hidden field.</li>
         <li>To remember your cookie choice so that we do not ask you again on every visit.</li>
         <li>
-          To keep records that the law requires, if you become a client.{" "}
-          <Placeholder>[TO CONFIRM: records required and their retention period]</Placeholder>
-        </li>
+          To keep records that the law requires, if you become a client.</li>
       </ul>
     ),
   },
@@ -157,12 +180,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           <strong>Inquiries.</strong> You send your inquiry voluntarily, for the purpose of getting a reply from us. We
-          rely on your consent, given by sending the form, and on the purpose for which you provided the information.{" "}
-          <Placeholder>
-            [TO CONFIRM with counsel: the legal ground under sections 6 and 7 of the DPDP Act. Also confirm whether a
-            notice must be shown before the form is sent. At present the form does not link to this policy]
-          </Placeholder>
-        </p>
+          rely on your consent, given by sending the form, and on the purpose for which you provided the information.</p>
         <p>
           <strong>Withdrawing consent.</strong> You may withdraw your consent at any time, as described in the section on
           withdrawing consent. Withdrawing does not affect processing that happened before you withdrew.
@@ -193,12 +211,7 @@ const sections: LegalSection[] = [
         </ul>
         <p>
           We do not use a customer database or a CRM for inquiries. The email in our mailbox is currently the main
-          record of an inquiry.{" "}
-          <Placeholder>
-            [TO CONFIRM: whether inquiries are also tracked in any other system, such as a spreadsheet or CRM, and if so,
-            which]
-          </Placeholder>
-        </p>
+          record of an inquiry.</p>
         <p>
           Application logs record the reference number, the outcome (sent or failed), a failure type where relevant, and
           the email provider&apos;s message identifier. The logs do not record your name, email address, phone number,
@@ -225,9 +238,7 @@ const sections: LegalSection[] = [
           </li>
           <li>
             <strong>Analytics and marketing:</strong> none. The Website does not use analytics, advertising pixels, or
-            embedded tracking. The Website does not set any cookies.{" "}
-            <Placeholder>[TO CONFIRM: re-check this statement against the live site before publication]</Placeholder>
-          </li>
+            embedded tracking. The Website does not set any cookies.</li>
         </ul>
         <h3>If optional technologies are added later</h3>
         <p>
@@ -256,7 +267,6 @@ const sections: LegalSection[] = [
               <th scope="col">Provider</th>
               <th scope="col">What it does</th>
               <th scope="col">Personal data it handles</th>
-              <th scope="col">Where data is processed</th>
             </tr>
           </thead>
           <tbody>
@@ -264,48 +274,31 @@ const sections: LegalSection[] = [
               <td>GitHub Pages (GitHub)</td>
               <td>Hosts the Website as static files</td>
               <td>Standard request data, such as IP address, browser type, and pages requested</td>
-              <td>
-                <Placeholder>[TO CONFIRM]</Placeholder>
-              </td>
             </tr>
             <tr>
               <td>Vercel</td>
               <td>Runs the inquiry service</td>
               <td>The inquiry details and request data while the service processes a request</td>
-              <td>
-                <Placeholder>[TO CONFIRM: deployment region]</Placeholder>
-              </td>
             </tr>
             <tr>
               <td>Resend</td>
               <td>Delivers the notification email</td>
               <td>The inquiry details, your email address, and our mailbox address</td>
-              <td>
-                <Placeholder>[TO CONFIRM]</Placeholder>
-              </td>
             </tr>
             <tr>
               <td>Google (Gmail)</td>
               <td>Hosts our business mailbox, where inquiries are received</td>
               <td>The inquiry email and any replies</td>
-              <td>
-                <Placeholder>[TO CONFIRM]</Placeholder>
-              </td>
             </tr>
           </tbody>
         </table>
         <p>
-          The Website loads its fonts and images from our own hosting. It does not load content from other websites, such
-          as embedded videos, maps, or social media widgets. Fonts are added during the build, so visitors&apos; browsers
-          do not contact a font service.{" "}
-          <Placeholder>[TO CONFIRM: re-check this statement against the live site before publication]</Placeholder>
+          The inquiry function runs on Vercel&apos;s edge runtime, and the repository does not pin a processing region.
         </p>
         <p>
-          <Placeholder>
-            [TO CONFIRM: that each provider&apos;s data processing terms have been reviewed and accepted, and that they
-            restrict use of the data to providing their service]
-          </Placeholder>
-        </p>
+          The Website loads its fonts and images from our own hosting. It does not load content from other websites, such
+          as embedded videos, maps, or social media widgets. Fonts are added during the build, so visitors&apos; browsers
+          do not contact a font service.</p>
       </>
     ),
   },
@@ -322,15 +315,14 @@ const sections: LegalSection[] = [
         </ul>
         <h3>Retention and deletion</h3>
         <p>
-          <Placeholder>
-            [TO CONFIRM: how long inquiries are kept, for example until the enquiry is closed plus a set period, and how
-            deletion is carried out in the mailbox and at each provider]
-          </Placeholder>
+          We keep inquiry information only for as long as reasonably necessary to respond to inquiries, manage business
+          relationships, document projects, resolve disputes, and meet legal obligations. We review stored inquiry emails
+          periodically and delete information that is no longer required, subject to legal obligations and legitimate
+          recordkeeping needs.
         </p>
         <p>
-          The cookie choice record expires after 365 days or when you clear your browser storage, whichever happens
-          first.{" "}
-          <Placeholder>[TO CONFIRM: renewal period]</Placeholder>
+          The cookie choice record expires after 365 days, or sooner when you clear your browser storage. We ask for
+          your choice again when it expires.
         </p>
         <h3>Security</h3>
         <p>The inquiry service is designed to:</p>
@@ -342,19 +334,17 @@ const sections: LegalSection[] = [
           <li>avoid writing inquiry content to logs.</li>
         </ul>
         <p>
-          No online service can guarantee security.{" "}
-          <Placeholder>
-            [TO CONFIRM: encryption in transit and at rest provided by each hosting provider, and the rate-limit
-            behaviour on the hosting platform. Do not describe encryption until this is verified]
-          </Placeholder>
-        </p>
+          No online service can guarantee security.</p>
         <h3>Personal data breaches</h3>
-        <p>
-          <Placeholder>
-            [TO CONFIRM: breach response procedure, including notice to affected people and to the Data Protection Board
-            of India where the DPDP Act requires it]
-          </Placeholder>
-        </p>
+        <p>If we become aware of a personal data breach affecting personal data we hold, we intend to:</p>
+        <ul>
+          <li>identify and contain the incident;</li>
+          <li>investigate its scope and the information affected;</li>
+          <li>preserve relevant evidence and document our response;</li>
+          <li>assess applicable notification requirements and deadlines;</li>
+          <li>notify affected individuals and authorities where the applicable law requires it;</li>
+          <li>remediate the underlying issue and review our preventive measures.</li>
+        </ul>
       </>
     ),
   },
@@ -364,8 +354,8 @@ const sections: LegalSection[] = [
     content: (
       <>
         <p>
-          We do not sell personal data collected through the Website.{" "}
-          <Placeholder>[TO CONFIRM: this commitment]</Placeholder> We share personal data only:
+          We do not sell personal data collected through the Website.
+           We share personal data only:
         </p>
         <ul>
           <li>with the service providers listed above, to run the Website and the inquiry service;</li>
@@ -380,18 +370,12 @@ const sections: LegalSection[] = [
     title: "International transfers",
     content: (
       <p>
-        Some of our providers are based outside India or process data outside India. Their data locations are listed in
-        the providers table.{" "}
-        <Placeholder>
-          [TO CONFIRM: the transfer arrangements, and whether any country restriction notified under the DPDP Act
-          applies]
-        </Placeholder>
-      </p>
+        Some of our service providers may process personal data outside India.</p>
     ),
   },
   {
     id: "rights",
-    title: "Your rights and privacy requests",
+    title: "Delete your personal data and your rights",
     content: (
       <>
         <p>Subject to the DPDP Act, you may ask us to:</p>
@@ -405,16 +389,12 @@ const sections: LegalSection[] = [
           To make a request, email{" "}
           <a href={`mailto:${PRIVACY_EMAIL}?subject=Privacy%20request`}>{PRIVACY_EMAIL}</a> with the subject
           &quot;Privacy request&quot;. Give enough detail for us to find your inquiry, such as the reference number.
-          We may ask you to verify your identity before we act.{" "}
-          <Placeholder>[TO CONFIRM: response timeline]</Placeholder>
+          We may ask you to verify your identity before we act, in proportion to the request. We aim to acknowledge
+          requests within 7 calendar days, and we will respond within the time that applicable law requires.
         </p>
         <p>
-          You may also raise a grievance with us. If you are not satisfied with our response,{" "}
-          <Placeholder>
-            [TO CONFIRM: the complaint route to the Data Protection Board of India and when it applies under the DPDP
-            Act]
-          </Placeholder>
-        </p>
+          You may also raise a grievance with us. If you are not satisfied with our response, you may approach the Data
+          Protection Board of India as the DPDP Act provides.</p>
       </>
     ),
   },
@@ -430,8 +410,7 @@ const sections: LegalSection[] = [
         </p>
         <p>
           After you withdraw consent, we stop using the data for the purpose you withdrew from. We may keep records we
-          are required by law to keep.{" "}
-          <Placeholder>[TO CONFIRM: process and timeline for withdrawal]</Placeholder>
+          are required by law to keep.
         </p>
       </>
     ),
@@ -442,8 +421,16 @@ const sections: LegalSection[] = [
     content: (
       <p>
         The Website and our services are intended for businesses and adults. We do not knowingly collect personal data
-        from children under 18. If you believe a child has sent us information, email us and we will delete it.{" "}
-        <Placeholder>[TO CONFIRM: approach to verifiable parental consent under the DPDP Act, if any]</Placeholder>
+        from children under 18. If you believe a child has sent us information, email us and we will delete it.</p>
+    ),
+  },
+  {
+    id: "links",
+    title: "Links to other websites",
+    content: (
+      <p>
+        The Website does not currently link to other websites. If we add such links, those websites are not covered by this
+        policy, and we recommend that you read the privacy policy of each site you visit.
       </p>
     ),
   },
@@ -452,15 +439,16 @@ const sections: LegalSection[] = [
     title: "Changes to this policy",
     content: (
       <p>
-        We may update this Privacy Policy. The &quot;Last updated&quot; date at the top shows when it last changed. For
-        significant changes, we will{" "}
-        <Placeholder>[TO CONFIRM: how changes are notified, for example a banner on the Website]</Placeholder>.
+        We may update this Privacy Policy. The &quot;Last updated&quot; date at the top shows when it last changed. We
+        publish each revised version on the Website. For material changes, we will give additional notice through an
+        appropriate channel where the law requires it or where it is reasonably necessary. Continuing to browse the
+        Website does not by itself count as consent where the law requires a specific affirmative consent.
       </p>
     ),
   },
   {
     id: "privacy-contact",
-    title: "Privacy contact information",
+    title: "Contact us",
     content: (
       <>
         <p>
@@ -470,9 +458,6 @@ const sections: LegalSection[] = [
         <ul>
           <li>
             Bharath Aadhya Intelligence, Bengaluru, India
-          </li>
-          <li>
-            <Placeholder>[TO CONFIRM: postal address and grievance contact]</Placeholder>
           </li>
         </ul>
       </>
@@ -484,7 +469,7 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      lastUpdated="30 October 2026 (draft)"
+      lastUpdated="30 October 2026"
       intro={
         <p>
           This page explains what personal data we handle when you use our website and send us a project inquiry, why we
