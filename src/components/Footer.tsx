@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, Users, Mail, Phone, MapPin, Send, Plus, createLucideIcon } from "lucide-react";
+import { Globe, Users, Mail, Phone, MapPin, Plus, createLucideIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCookieConsent } from "@/components/cookie-consent/CookieConsentProvider";
@@ -148,27 +148,20 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Newsletter Column */}
+          {/* Call-to-action Column: links to the inquiry form. Not a mailing-list signup. */}
           <div className="lg:col-span-2 lg:ml-auto max-w-sm w-full">
             <h4 className="text-xs font-black uppercase tracking-[0.2em] text-foreground mb-8">
-              Stay Updated
+              Start a Project
             </h4>
             <p className="text-muted font-medium mb-6">
-              Subscribe to get the latest innovation challenges and program updates directly in your inbox.
+              Have an idea or a project in mind? Tell us what you want to build and our team will get back to you.
             </p>
-            <form className="relative group">
-              <input
-                type="email"
-                placeholder="you@email.com"
-                className="w-full bg-white border-2 border-border-subtle rounded-2xl py-4 pl-6 pr-14 text-foreground font-bold placeholder:text-muted/50 focus:border-accent-indigo outline-none transition-all shadow-sm"
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-2 bottom-2 aspect-square bg-accent-indigo text-white rounded-xl flex items-center justify-center hover:shadow-lg transition-all active:scale-90"
-              >
-                <Send size={20} />
-              </button>
-            </form>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center justify-center px-6 py-4 bg-accent-indigo text-white rounded-2xl font-bold hover:shadow-lg transition-all active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo"
+            >
+              Send a project inquiry
+            </Link>
           </div>
         </div>
 
