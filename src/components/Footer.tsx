@@ -51,12 +51,12 @@ import LogoImg from "../../public/Logo.jpeg";
 
 export default function Footer() {
   return (
-    <footer className="bg-white pt-24 pb-12 border-t border-border-subtle relative overflow-hidden">
+    <footer className="bg-white pt-16 md:pt-24 pb-12 border-t border-border-subtle relative overflow-hidden">
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 grid-background opacity-[0.05] pointer-events-none" />
 
       <div className="container relative z-10 mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-16 md:mb-20">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-8 group">
@@ -157,10 +157,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-muted text-sm font-bold">
+          <p className="text-muted text-sm font-bold text-center md:text-left">
             © {new Date().getFullYear()} Bharath Aadhya Intelligence. All rights reserved.
           </p>
-          <div className="flex items-center gap-8">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
              <div className="flex items-center gap-2 text-muted font-bold text-sm">
                 <MapPin size={16} className="text-accent-indigo" />
                 Bengaluru, India

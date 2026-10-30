@@ -13,7 +13,7 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const navLinks = [
-  { name: "AI Research", href: "#ai" },
+  { name: "AI Research", href: "#services" },
   { name: "Services", href: "#services" },
   { name: "Portfolio", href: "#portfolio" },
 ];
@@ -26,32 +26,44 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const y = Math.max(
+        window.scrollY,
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      );
+      setIsScrolled(y > 20);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Sync on mount: the browser can restore a scrolled position on reload
+    // before this effect runs, and no scroll event fires for it.
+    handleScroll();
+    // Capture on document so scrolling in any container updates the header,
+    // not only window scrolling (scroll events don't bubble).
+    document.addEventListener("scroll", handleScroll, { capture: true, passive: true });
+    return () => document.removeEventListener("scroll", handleScroll, { capture: true });
   }, []);
+
+  const isLight = isScrolled || isMobileMenuOpen;
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 py-4",
         isScrolled ? "bg-white/90 backdrop-blur-md border-b border-border-subtle" : "bg-transparent"
       )}
     >
       <div className="max-w-[1400px] mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm overflow-hidden p-1.5">
-            <Image 
-              src={LogoImg} 
-              alt="Bharath Aadhya Intelligence Logo" 
-              className="w-full h-full object-contain" 
+          <div className="w-11 h-11 sm:w-14 sm:h-14 bg-white rounded-xl flex items-center justify-center transition-all duration-300 shadow-sm overflow-hidden p-1.5 shrink-0">
+            <Image
+              src={LogoImg}
+              alt="Bharath Aadhya Intelligence Logo"
+              className="w-full h-full object-contain"
             />
           </div>
           <div className="flex flex-col leading-tight">
             <span className={cn(
-              "font-display font-black text-xl tracking-tight transition-colors duration-300",
+              "font-display font-black text-base sm:text-xl tracking-tight whitespace-nowrap transition-colors duration-300",
               isScrolled ? "text-foreground" : "text-white"
             )}>
               Bharath Aadhya
@@ -73,7 +85,7 @@ export default function Header() {
               href={link.href}
               className={cn(
                 "text-sm font-bold transition-colors duration-300",
-                isScrolled ? "text-muted hover:text-accent-indigo" : "text-white/90 hover:text-white"
+                isScrolled ? "text-foreground hover:text-accent-indigo" : "text-white/90 hover:text-white"
               )}
             >
               {link.name}
@@ -94,8 +106,8 @@ export default function Header() {
             href="#login"
             className={cn(
               "px-5 py-2 border rounded-lg text-sm font-bold transition-all",
-              isScrolled 
-                ? "border-border-emphasis text-foreground hover:bg-black/5" 
+              isScrolled
+                ? "border-border-emphasis text-foreground hover:bg-black/5"
                 : "border-white/30 text-white hover:bg-white/10"
             )}
           >
@@ -105,7 +117,7 @@ export default function Header() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-foreground"
+          className={cn("md:hidden transition-colors duration-300", isLight ? "text-foreground" : "text-white")}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

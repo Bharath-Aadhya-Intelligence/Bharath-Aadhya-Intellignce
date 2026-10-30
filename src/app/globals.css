@@ -80,3 +80,19 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Pure CSS entrance so content renders even if client JS is slow or fails */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+  }
+}
