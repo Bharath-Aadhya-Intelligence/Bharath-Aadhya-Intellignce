@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   basePath: "/Bharath-Aadhya-Intellignce",
+  // Emits /privacy-policy/index.html so GitHub Pages serves /privacy-policy/ directly.
+  trailingSlash: true,
   // Dev only: lets the page load its JavaScript when opened via these hosts.
   // Without it, Next blocks the JS and the header/hero never hydrate.
   allowedDevOrigins: ["0.0.0.0", "127.0.0.1"],

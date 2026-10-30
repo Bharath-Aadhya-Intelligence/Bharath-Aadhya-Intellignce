@@ -96,3 +96,41 @@
     animation: none;
   }
 }
+
+/* Legal pages: styles the plain HTML inside LegalPage (.legal-body). */
+.legal-body h2 {
+  @apply mt-12 mb-4 font-display text-xl font-black uppercase tracking-tight text-foreground scroll-mt-24;
+}
+
+.legal-body h3 {
+  @apply mt-8 mb-3 text-base font-black text-foreground;
+}
+
+.legal-body p {
+  @apply mb-4 leading-relaxed text-muted;
+}
+
+.legal-body ul {
+  @apply mb-4 list-disc space-y-2 pl-6 text-muted;
+}
+
+.legal-body a {
+  @apply rounded text-accent-indigo underline underline-offset-2 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo;
+}
+
+.legal-body table {
+  @apply mb-6 w-full border-collapse text-left text-sm;
+}
+
+.legal-body th,
+.legal-body td {
+  @apply border border-border-subtle p-3 align-top;
+}
+
+.legal-body th {
+  @apply bg-black/5 font-black text-foreground;
+}
+
+.legal-body td {
+  @apply text-muted;
+}

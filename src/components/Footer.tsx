@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Globe, Users, Mail, Phone, MapPin, Send, Plus, createLucideIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useCookieConsent } from "@/components/cookie-consent/CookieConsentProvider";
 
 // Custom icons due to missing brand icons in this version of lucide-react
 const Linkedin = createLucideIcon('Linkedin', [
@@ -29,17 +30,21 @@ const Youtube = createLucideIcon('Youtube', [
   ['path', { d: 'm10 15 5-3-5-3z', key: '2' }]
 ]);
 
+// Section links point at the home page ("/#...") so they also work on the legal pages.
 const companyLinks = [
-  { name: "Programs", href: "#programs" },
-  { name: "Services", href: "#services" },
-  { name: "Impact", href: "#about" },
+  { name: "Programs", href: "/#programs" },
+  { name: "Services", href: "/#services" },
+  { name: "Impact", href: "/#about" },
   { name: "Community", href: "#" },
 ];
 
-const supportLinks = [
-  { name: "Contact Us", href: "#contact" },
-  { name: "Privacy Policy", href: "#" },
-  { name: "Terms of Service", href: "#" },
+type SupportLink = { name: string; href: string } | { name: string; action: "cookie-settings" };
+
+const supportLinks: SupportLink[] = [
+  { name: "Contact Us", href: "/#contact" },
+  { name: "Privacy Policy", href: "/privacy-policy/" },
+  { name: "Terms of Service", href: "/terms-of-service/" },
+  { name: "Cookie Settings", action: "cookie-settings" },
   { name: "FAQs", href: "#" },
 ];
 
@@ -50,6 +55,8 @@ const socialLinks = [
 import LogoImg from "../../public/Logo.jpeg";
 
 export default function Footer() {
+  const { openPreferences } = useCookieConsent();
+
   return (
     <footer className="bg-white pt-16 md:pt-24 pb-12 border-t border-border-subtle relative overflow-hidden">
       {/* Subtle Grid Background */}
@@ -119,12 +126,22 @@ export default function Footer() {
               <ul className="space-y-4">
                 {supportLinks.map((link) => (
                   <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-muted font-bold hover:text-accent-indigo transition-colors"
-                    >
-                      {link.name}
-                    </Link>
+                    {"action" in link ? (
+                      <button
+                        type="button"
+                        onClick={openPreferences}
+                        className="text-left text-muted font-bold hover:text-accent-indigo transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo"
+                      >
+                        {link.name}
+                      </button>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-muted font-bold hover:text-accent-indigo transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-indigo"
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
