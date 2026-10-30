@@ -68,21 +68,17 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 hero-gradient-vibrant overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-24 hero-gradient-vibrant overflow-hidden scroll-mt-24">
       {/* Background Grid */}
       <div className="absolute inset-0 grid-overlay-white opacity-[0.2]" />
 
       <div className="container relative z-10 mx-auto px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             {/* Left Content */}
             <div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
+              <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] font-black uppercase tracking-wider mb-6">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
@@ -91,7 +87,7 @@ export default function Contact() {
                   Live Availability: Responses in 15m
                 </div>
 
-                <h2 className="text-4xl md:text-6xl lg:text-5xl xl:text-6xl font-display font-black text-white mb-6 tracking-tight leading-[1.1] uppercase">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-display font-black text-white mb-6 tracking-tight leading-[1.1] uppercase break-words">
                   LET&apos;S BUILD THE <span className="text-white italic">FUTURE</span> TOGETHER
                 </h2>
                 <p className="text-lg text-white/70 font-medium mb-10 leading-relaxed">
@@ -118,14 +114,11 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Contact Form Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 0.90 }}
-              viewport={{ once: true }}
+            <div
               className="relative p-8 md:p-12 bg-white/10 backdrop-blur-3xl rounded-[2.5rem] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden"
             >
               {/* Card Ambient Glow */}
@@ -138,7 +131,7 @@ export default function Contact() {
                     onSubmit={handleSubmit}
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="relative z-10 space-y-8"
+                    className="relative z-10 space-y-6"
                   >
                     {error && (
                       <motion.div
@@ -151,11 +144,11 @@ export default function Contact() {
                       </motion.div>
                     )}
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Full Name</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-white/90 ml-1">Full Name</label>
                         <div className="relative group">
-                          <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
+                          <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 group-focus-within:text-white transition-colors" size={18} />
                           <input
                             required
                             name="fullName"
@@ -163,14 +156,14 @@ export default function Contact() {
                             onChange={handleChange}
                             type="text"
                             placeholder="John Doe"
-                            className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
+                            className="w-full bg-white/15 border-2 border-white/30 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white focus:bg-white/25 transition-all font-bold text-white placeholder:text-white/60"
                           />
                         </div>
                       </div>
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Business Email</label>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-white/90 ml-1">Business Email</label>
                         <div className="relative group">
-                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
+                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 group-focus-within:text-white transition-colors" size={18} />
                           <input
                             required
                             name="email"
@@ -178,16 +171,16 @@ export default function Contact() {
                             onChange={handleChange}
                             type="email"
                             placeholder="john@company.com"
-                            className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
+                            className="w-full bg-white/15 border-2 border-white/30 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white focus:bg-white/25 transition-all font-bold text-white placeholder:text-white/60"
                           />
                         </div>
                       </div>
                     </div>
 
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Phone Number</label>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-white/90 ml-1">Phone Number</label>
                       <div className="relative group">
-                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 group-focus-within:text-white transition-colors" size={18} />
                         <input
                           required
                           name="phone"
@@ -195,37 +188,37 @@ export default function Contact() {
                           onChange={handleChange}
                           type="tel"
                           placeholder="+91 98765 43210"
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20"
+                          className="w-full bg-white/15 border-2 border-white/30 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white focus:bg-white/25 transition-all font-bold text-white placeholder:text-white/60"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Project Type</label>
+                      <label className="text-[10px] font-black uppercase tracking-widest text-white/90 ml-1">Project Type</label>
                       <div className="relative group">
-                        <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-white transition-colors" size={18} />
+                        <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 group-focus-within:text-white transition-colors" size={18} />
                         <select
                           required
                           name="projectType"
                           value={formData.projectType}
                           onChange={handleChange}
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white appearance-none cursor-pointer placeholder:text-white/20"
+                          className="w-full bg-white/15 border-2 border-white/30 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-white focus:bg-white/25 transition-all font-bold text-white appearance-none cursor-pointer placeholder:text-white/60"
                         >
                           <option value="" disabled className="text-foreground">Select a service</option>
                           {projectTypes.map(type => (
                             <option key={type} value={type} className="text-foreground">{type}</option>
                           ))}
                         </select>
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/30">
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/80">
                           ▼
                         </div>
                       </div>
                     </div>
 
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Project Details</label>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-white/90 ml-1">Project Details</label>
                       <div className="relative group">
-                        <MessageSquare className="absolute left-4 top-6 text-white/30 group-focus-within:text-white transition-colors" size={18} />
+                        <MessageSquare className="absolute left-4 top-6 text-white/80 group-focus-within:text-white transition-colors" size={18} />
                         <textarea
                           required
                           name="details"
@@ -233,7 +226,7 @@ export default function Contact() {
                           onChange={handleChange}
                           rows={4}
                           placeholder="Tell us about your vision..."
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-5 pl-14 pr-6 outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all font-bold text-white placeholder:text-white/20 resize-none"
+                          className="w-full bg-white/15 border-2 border-white/30 rounded-2xl py-5 pl-14 pr-6 outline-none focus:border-white focus:bg-white/25 transition-all font-bold text-white placeholder:text-white/60 resize-none"
                         ></textarea>
                       </div>
                     </div>
@@ -258,7 +251,7 @@ export default function Contact() {
                     key="success"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="relative z-10 text-center py-20"
+                    className="relative z-10 text-center py-12 sm:py-20"
                   >
                     <div className="w-20 h-20 bg-white/10 text-white rounded-full flex items-center justify-center mx-auto mb-8">
                       <CheckCircle2 size={40} />
@@ -276,7 +269,7 @@ export default function Contact() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

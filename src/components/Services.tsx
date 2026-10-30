@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
   Bot,
   Smartphone,
@@ -51,41 +48,25 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-24 bg-white overflow-hidden">
+    <section id="services" className="relative py-16 md:py-24 bg-white overflow-hidden scroll-mt-24">
       {/* Grid Pattern */}
       <div className="absolute inset-0 grid-background opacity-[0.2]" />
 
       <div className="container relative z-10 mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl font-display font-black text-foreground mb-4 tracking-tight"
-          >
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-display font-black text-foreground mb-4 tracking-tight">
             OUR CORE EXPERTISE
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-lg text-muted font-medium"
-          >
-            From building India's first LLM to crafting elite digital experiences, we redefine the boundaries of innovation.
-          </motion.p>
+          </h2>
+          <p className="text-lg text-muted font-medium">
+            From building India&apos;s first LLM to crafting elite digital experiences, we redefine the boundaries of innovation.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {services.map((service) => (
+            <div
               key={service.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="group relative p-8 bg-white border border-border-subtle rounded-2xl transition-all hover:border-accent-indigo/30 hover:shadow-[0_20px_40px_rgba(73,83,245,0.06)]"
+              className="group relative p-6 sm:p-8 bg-white border border-border-subtle rounded-2xl transition-all hover:-translate-y-1 hover:border-accent-indigo/30 hover:shadow-[0_20px_40px_rgba(73,83,245,0.06)]"
             >
               <div className="flex items-start gap-5">
                 <div className="relative">
@@ -102,7 +83,7 @@ export default function Services() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
